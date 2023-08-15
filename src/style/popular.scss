@@ -1,0 +1,87 @@
+.popular{
+  padding: 88px 0 182px;
+  background: #222236;
+  text-align: center;
+
+  &__top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 39px;
+
+    &-title{
+      color: #FFF;
+      font-size: 32px;
+      font-weight: 400;
+    }
+    &-btns{
+      display: flex;
+      align-items: center;
+      column-gap: 17px;
+    }
+    &-btn{
+      border-radius: 50%;
+      background: transparent;
+      border: 2px solid #FFFFFF;
+      padding: 3px  0 0;
+
+      &:hover{
+        background: cadetblue;
+      }
+    }
+  }
+  &__row{
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+    justify-content: center;
+    margin-bottom: 79px;
+  }
+  &__card{
+    padding: 187px 15px 16px;
+    background: url("../../src/assets/Picture.png") center/cover no-repeat;
+    display: flex;
+    column-gap: 72px;
+    position: relative;
+    border-radius: 8.036px;
+    border: 2.419px solid rgba(255, 255, 255, 0.30);
+    width: calc(25% - 8px);
+
+    &-title{
+      color: #FFF;
+      font-size: 16px;
+      font-weight: 400;
+    }
+    &-price{
+      color: #FFF;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    &-text{
+      position: absolute;
+      left: 15px;
+      top: 15px;
+      border-radius: 5.234px;
+      background: #FFF;
+      padding: 3px 4px;
+      color: #000;
+      font-size: 14.515px;
+      font-weight: 500;
+    }
+    &-rest{
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      display: flex;
+      align-items: center;
+      column-gap: 3px;
+      border-radius: 5.234px;
+      background: #FFF;
+      padding: 5px 6px;
+      color: #000;
+      font-size: 14.515px;
+      font-weight: 500;
+    }
+  }
+}

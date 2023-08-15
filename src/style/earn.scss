@@ -1,0 +1,46 @@
+.earn{
+  background: #222236;
+
+
+  &__row{
+    display: flex;
+    column-gap: 110px;
+    align-items: center;
+
+  }
+  &__right{
+
+    &-title{
+      color: #FFF;
+      font-size: 40px;
+      font-weight: 500;
+    }
+    &-text{
+      color: var(--white, #FFF);
+      font-size: 16px;
+      font-weight: 400;
+      margin: 21px 0 32px;
+      opacity: 0.8;
+    }
+    &-btn{
+      padding: 12px 33px;
+      border-radius: 100px;
+      border: 2px solid var(--white, #FFF);
+      background: transparent;
+      color: var(--white, #FFF);
+      font-size: 20px;
+      font-weight: 500;
+
+      &:hover{
+        border-radius: 100px;
+        border: 2px solid var(--white, #FFF);
+        background: var(--yellow, #FAE620);
+        padding: 12px 33px;
+        color: var(--darkblue, #222236);
+        font-size: 20px;
+        font-weight: 500;
+      }
+
+    }
+  }
+}

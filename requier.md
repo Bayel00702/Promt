@@ -5,9 +5,9 @@
 
 ## Библиотеки : 
 
-### CRUD - axios, fetch , ky
+### CRUD - axios, ky
 ### Стейт менеджер - Redux-Toolkit
-### Работа с формами - react-hook-form, formik
+### Работа с формами - react-hook-form
 ### Маршрутизация - react-router-dom
 ### UI Component - Material UI, Chakra UI
 ### OTHER - UUID, Toastify, Framer-Motion, Swiper,react-icons, sass, i18n
@@ -19,9 +19,10 @@
 3) Личный кабинет                     
 4) Каталог объявлений                                 
 5) Отдельно 1 объявление
-6) Отдельно 1 user                                     
-7) Добавление объявления
-8) Список моих объявлений                              
-9) 404
+6) Отдельно 1 user
+7) Личный профиль                                     
+8) Добавление объявления
+9) Список моих объявлений                              
+10) 404
 
 ## Разработчики : [Omurzakov Sanjarbek, Konurbaev_Baiel](https://github.com/Bayel00702/Promt)

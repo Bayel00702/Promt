@@ -1,0 +1,19 @@
+.newest{
+  background: #222236;
+  padding: 87px 0 185px;
+  text-align: center;
+
+  &__top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 37px;
+  }
+  &__row{
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+    justify-content: center;
+    margin-bottom: 79px;
+  }
+}

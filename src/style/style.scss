@@ -11,6 +11,32 @@
 }
 
 .container{
-  max-width: 1145px;
+  max-width: 1365px;
   margin: 0 auto;
 }
+
+input{
+  outline: none;
+  border: none;
+}
+
+image{
+  object-fit: cover;
+}
+
+button{
+  cursor: pointer;
+  border: none;
+}
+
+@import "header";
+@import "footer";
+@import "free";
+@import "feature";
+@import "promts";
+@import "what";
+@import "popular";
+@import "earn";
+@import "newest";
+@import "directly";
+@import "catalog";

@@ -1,0 +1,19 @@
+.feature{
+  background: #222236;
+  padding: 86px 0 141px;
+
+  &__title{
+    color: #FFF;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 37px;
+  }
+  &__list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 77px;
+    row-gap: 29px;
+  }
+}

@@ -1,0 +1,18 @@
+.what{
+  background: rgba(11, 136, 217, 0.50);
+  padding: 64px 0;
+  text-align: center;
+
+  &__title{
+    color: #FFF;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 21px;
+  }
+  &__text{
+    color: var(--white, #FFF);
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0.8;
+  }
+}

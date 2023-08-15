@@ -1,0 +1,92 @@
+.promts{
+  background: #222236;
+  text-align: center;
+  padding-bottom: 136px;
+
+  &__btns{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    justify-content: center;
+
+  }
+  &__btn{
+    padding: 19px 40px;
+    border-radius: 8.968px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: transparent;
+    color: var(--white, #FFF);
+    font-size: 20px;
+    font-weight: 400;
+    opacity: 0.8;
+
+    &:hover{
+      border-radius: 8.968px;
+      background: var(--green, #4CDE55);
+      color: var(--black, #000);
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+  &__row{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px 31px;
+    justify-content: center;
+    margin: 89px 0 76px;
+  }
+  &__card{
+    background: url("../../src/assets/Picture.png") center/cover no-repeat;
+    padding: 187px 15px 16px;
+    position: relative;
+    display: flex;
+    column-gap: 72px;
+    border-radius: 8.036px;
+    border: 2.419px solid rgba(255, 255, 255, 0.30);
+    width: calc(25% - 8px);
+
+    &-title{
+      color: #FFF;
+      font-size: 16px;
+      font-weight: 400;
+    }
+    &-price{
+      color: #FFF;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    &-text{
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      border-radius: 5.234px;
+      background: #FFF;
+      padding: 3px 4px;
+      color: #000;
+      font-size: 14.515px;
+      font-weight: 500;
+    }
+  }
+  &__btnMarket{
+    border-radius: 100px;
+    border: 2px solid var(--white, #FFF);
+    background: transparent;
+    color: var(--white, #FFF);
+    font-size: 20px;
+    font-weight: 500;
+    padding: 17px 41px;
+
+    &:hover{
+      border-radius: 100px;
+      border: 2px solid var(--white, #FFF);
+      background: var(--yellow, #FAE620);
+      padding: 17px 41px;
+      color: var(--darkblue, #222236);
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+  }
+}

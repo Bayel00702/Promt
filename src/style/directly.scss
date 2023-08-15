@@ -1,0 +1,15 @@
+.directly{
+  background: #222236;
+  text-align: center;
+  padding-bottom: 130px;
+  &__row{
+    display: flex;
+    align-items: center;
+    column-gap: 94px;
+    justify-content: center;
+    margin-bottom: 91px;
+  }
+  &__left{
+    text-align: left;
+  }
+}
