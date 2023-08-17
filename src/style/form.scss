@@ -1,0 +1,174 @@
+.login{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 469px;
+
+  &__title{
+    color: var(--white, #FFF);
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 30px;
+  }
+  &__block{
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(13.5px);
+    position: relative;
+
+
+    &-btns{
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    &-btn{
+      padding: 24px 0;
+      width: 100%;
+      border-bottom: 0.368px solid var(--white, #FFF);
+      background: transparent;
+      color: var(--white, #FFF);
+      text-align: center;
+      font-size: 16px;
+      font-weight: 400;
+
+      &.active{
+        background: var(--green, #4CDE55);
+        color: var(--black, #000);
+        text-align: center;
+        font-size: 16px;
+        font-weight: 400;
+      }
+
+      &:hover{
+        background: var(--green, #4CDE55);
+        color: var(--black, #000);
+        text-align: center;
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
+    &-link{
+      width: 100%;
+    }
+
+    &-btn2{
+      border-radius: 8px 0 0 0;
+      border-right: 0.368px solid var(--white, #FFF);
+    }
+    &-btn3{
+      border-radius: 0 8px 0 0;
+    }
+
+  }
+
+  &__form{
+    padding: 104px 31px 25px;
+    &-label{
+      width: 100%;
+    }
+    &-input{
+      width: 100%;
+      padding: 16px 24px;
+      border-radius: 8px;
+      border: 1px solid var(--black-10, rgba(15, 15, 14, 0.10));
+      background: rgba(255, 255, 255, 0.30);
+
+      &::placeholder{
+        color: rgba(255, 255, 255, 0.70);
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+    &-title {
+      color: var(--white, #FFF);
+      font-size: 14px;
+      font-weight: 500;
+      margin:10px 0 8px;
+    }
+    &-error{
+      font-size: 12px;
+      color: red;
+      font-weight: 300;
+    }
+    &-pass{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      border-radius: 8px;
+      border: 1px solid var(--black-10, rgba(15, 15, 14, 0.10));
+      background: rgba(255, 255, 255, 0.30);
+
+      span{
+        font-size: 18px;
+        color: lightgrey;
+      }
+    }
+    &-input2{
+      background: transparent;
+
+      &::placeholder{
+        color: rgba(255, 255, 255, 0.70);
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
+    &-subtitle{
+      color: var(--white, #FFF);
+      font-size: 14px;
+      font-weight: 400;
+      margin-top: 6px;
+    }
+    &-send{
+      padding: 10px 0;
+      width: 100%;
+      border-radius: 34px;
+      border: 1px solid var(--darkblue, #222236);
+      background: var(--yellow, #FAE620);
+      color: var(--darkblue, #222236);
+      text-align: center;
+      font-size: 20px;
+      font-weight: 500;
+      margin: 29px 0 10px;
+    }
+    &-text{
+      color: var(--white, #FFF);
+      text-align: center;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    &-link{
+      color: var(--blue, #0B88D9);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    &-span{
+      color: var(--white, #FFF);
+      text-align: center;
+      font-size: 14px;
+      font-weight: 400;
+      margin: 23px 0 20px;
+    }
+    &-google{
+      padding: 10px 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.10);
+      color: var(--white, #FFF);
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+}

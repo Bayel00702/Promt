@@ -29,6 +29,10 @@ button{
   border: none;
 }
 
+body{
+  background: #222236;
+}
+
 @import "header";
 @import "footer";
 @import "free";
@@ -40,3 +44,4 @@ button{
 @import "newest";
 @import "directly";
 @import "catalog";
+@import "form";

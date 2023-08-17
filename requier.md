@@ -25,4 +25,4 @@
 9) Список моих объявлений                              
 10) 404
 
-## Разработчики : [Omurzakov Sanjarbek, Konurbaev_Baiel](https://github.com/Bayel00702/Promt)
+## Разработчики : [Omurzakov Sanjarbek: (https://github.com/SanjarbekO/promtBackEnd) , Konurbaev_Baiel: (https://github.com/Bayel00702/PromtFrontEnd)]()
