@@ -1,0 +1,33 @@
+.error{
+  background: #222236;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 150px 0 100px 0;
+  &__img{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+
+  }
+  &__title{
+    color: #0B88D9;
+    padding-bottom: 14px;
+    font-size: 120px;
+    z-index: 1;
+  }
+  &__subtitle{
+    color: #FFFFFF;
+    padding-bottom: 44px;
+    font-size: 40px;
+    z-index: 1;
+  }
+  &__link{
+    color: #FFFFFF;
+    font-size: 20px;
+    z-index: 1;
+  }
+}
