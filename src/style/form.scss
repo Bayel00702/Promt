@@ -4,6 +4,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 469px;
+  height: 100%;
+  padding: 100px 0;
 
   &__title{
     color: var(--white, #FFF);

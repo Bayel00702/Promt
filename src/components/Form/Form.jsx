@@ -62,6 +62,31 @@ const Form = () => {
 
 
                 <form action="" className="login__form">
+
+                    <label htmlFor="" className="login__form-label">
+                        <h3 className="login__form-title">Login*</h3>
+                        <input {...register('login', {
+                            required: {
+                                message: 'Обязательно к заполнению',
+                                value: true
+                            },
+                            minLength: {
+                                value: 3,
+                                message: "Минимум 3 символа"
+                            },
+
+                            pattern: {
+                                message: 'Напишите правильно свое имя',
+                                value: /^[а-я-ЯёЁa-zA-Z]+$/
+                            }
+                        })} placeholder="Enter your login" type="text" className="login__form-input"/>
+                        <p className='login__form-error'>
+                            {errors.login && errors.login?.message}
+                        </p>
+                    </label>
+
+
+
                     {
                         location.pathname === '/register' ?
                             <label htmlFor="" className="login__form-label">
