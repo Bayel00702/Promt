@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../../../assets/Logo.png'
-import {AiOutlineSearch,AiOutlineTwitter} from 'react-icons/ai';
+import {AiOutlineSearch,AiOutlineTwitter,AiOutlineUser} from 'react-icons/ai';
 import {BsFacebook,BsInstagram} from 'react-icons/bs';
 import {Link} from 'react-router-dom'
 
@@ -45,8 +45,10 @@ const Header = () => {
                             <Link className="header__right-icons" to=''><BsFacebook/></Link>
                             <Link className="header__right-icons" to=''><BsInstagram/></Link>
                             <Link className="header__right-icons" to=''><AiOutlineTwitter/></Link>
+                            <Link className="header__right-icons" to='/room'><AiOutlineUser/></Link>
                         </span>
                     </div>
+                    <Link to='/adddeclaration' className="header__btn">Подать объявление</Link>
                 </nav>
             </div>
         </header>

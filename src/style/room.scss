@@ -1,0 +1,220 @@
+.room{
+  padding: 100px 0 80px;
+
+  &__row2{
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+  }
+
+  &__top{
+    border: 1px solid lightgrey;
+    width: 21%;
+    padding: 15px 10px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }
+  &__list{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    justify-content: center;
+  }
+  &__item{
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 400;
+    background: transparent;
+
+    &:hover{
+      color: #FAE620;
+      position: relative;
+
+      &:before{
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #FAE620;
+        position: absolute;
+        bottom: -15px;
+      }
+    }
+    &.active{
+      color: #FAE620;
+      position: relative;
+      &:before{
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #FAE620;
+        position: absolute;
+        bottom: -15px;
+      }
+    }
+  }
+
+  &__row{
+    display: flex;
+    column-gap: 50px;
+    justify-content: center;
+  }
+  &__left{
+    padding: 15px 20px;
+    background: darkgray;
+    border-radius: 10px;
+    width: 30%;
+    position: relative;
+    &-gen{
+      display: flex;
+      align-items: center;
+      column-gap: 20px;
+      color: #000;
+      font-size: 14.515px;
+      font-weight: 500;
+      padding: 10px 20px;
+      background: lightgrey;
+      border-radius: 15px;
+    }
+    &-btn{
+      background: transparent;
+      color: red;
+      font-size: 15px;
+      font-weight: 500;
+      position: absolute;
+      transform: translate(-50%,-50%);
+      left: 50%;
+      bottom: 20px;
+    }
+
+    &-list{
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+    }
+    &-item{
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      color: #000;
+      font-size: 14.515px;
+      font-weight: 500;
+
+      &.active{
+        padding: 10px 20px;
+        background: lightgrey;
+        border-radius: 15px;
+      }
+
+      &:hover{
+        padding: 10px 20px;
+        background: lightgrey;
+        border-radius: 15px;
+      }
+
+      span{
+        font-size: 20px;
+        background: lightgrey;
+        padding: 10px 10px 5px;
+        border-radius: 50%;
+
+      }
+    }
+  }
+  &__right{
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(13.5px);
+    padding: 20px 30px;
+    width: 70%;
+
+
+    &-title{
+      color: #FFFFFF;
+      font-size: 32px;
+      font-weight: 500;
+
+    }
+    &-subtitle{
+      color: #FFF;
+      font-size: 25px;
+      font-weight: 400;
+      margin: 10px 0 8px;
+    }
+    &-image{
+      display: flex;
+      align-items: center;
+      column-gap: 15px;
+
+      &__img{
+        border-radius: 50%;
+        width: 60px;
+      }
+      span{
+        font-size: 20px;
+        padding: 14px 13px 5px;
+        background: lightgrey;
+        border-radius: 50%;
+      }
+
+      }
+    &-input{
+      padding: 16px 24px;
+      border-radius: 8px;
+      border: 1px solid var(--black-10, rgba(15, 15, 14, 0.10));
+      background: rgba(255, 255, 255, 0.30);
+
+      &::placeholder{
+        color: rgba(255, 255, 255, 0.70);
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+    &-input2{
+      padding: 16px 24px 60px;
+      border-radius: 8px;
+      border: 1px solid var(--black-10, rgba(15, 15, 14, 0.10));
+      background: rgba(255, 255, 255, 0.30);
+      width: 100%;
+
+      &::placeholder{
+        color: rgba(255, 255, 255, 0.70);
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+    &-btn{
+      border-radius: 100px;
+      border: 2px solid var(--white, #FFF);
+      background: transparent;
+      color: var(--white, #FFF);
+      font-size: 20px;
+      font-weight: 500;
+      padding:  15px 70px;
+      margin: 50px 380px 0;
+
+      &:hover{
+        border-radius: 100px;
+        border: 2px solid var(--white, #FFF);
+        background: var(--yellow, #FAE620);
+        padding:  15px 70px;
+        color: var(--darkblue, #222236);
+        font-size: 20px;
+        font-weight: 500;
+
+      }
+    }
+
+  }
+
+  &__pass{
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(13.5px);
+    padding: 20px 30px;
+    width: 70%;
+      &-input{
+        width: 100%;
+      }
+
+  }
+}

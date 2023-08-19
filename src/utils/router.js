@@ -27,23 +27,23 @@ export default function Router () {
                     element: <Catalog/>
                 },
                 {
-                    path: '/AddDeclaration',
+                    path: '/adddeclaration',
                     element: <AddDeclaration/>
                 },
                 {
-                    path: '/Declaration',
+                    path: 'declaration',
                     element: <Declaration/>
                 },
                 {
-                    path: '/MyDeclaration',
+                    path: '/mydeclaration',
                     element: <MyDeclaration/>
                 },
                 {
-                    path: '/OneUser',
+                    path: '/oneuser',
                     element: <OneUser/>
                 },
                 {
-                    path: '/Room',
+                    path: '/room',
                     element: <Room/>
                 },
                 {

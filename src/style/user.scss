@@ -1,0 +1,36 @@
+.user{
+  padding: 100px 0 80px;
+
+  &__profile{
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    margin-bottom: 50px;
+
+    &-img{
+      border-radius: 50%;
+    }
+    &-info{
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+    }
+    &-name{
+      color: #FFF;
+      font-size: 32px;
+      font-weight: 500;
+    }
+    &-date{
+      color: var(--white, #FFF);
+      text-align: center;
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
+  &__bottom{
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+  }
+}

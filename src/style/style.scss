@@ -11,7 +11,7 @@
 }
 
 .container{
-  max-width: 1365px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -33,6 +33,34 @@ body{
   background: #222236;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @import "header";
 @import "footer";
 @import "free";
@@ -45,3 +73,22 @@ body{
 @import "directly";
 @import "catalog";
 @import "form";
+@import "addDeclaration";
+@import "declaration";
+@import "room";
+@import "user";
+
+
+.mySwiper .swiper-slide{
+  opacity: 0.4;
+}
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+.swiper-button-next, .swiper-button-prev{
+
+  &::after{
+    font-size: 18px;
+    color: gray;
+  }
+}

@@ -3,6 +3,26 @@
   background: #222236;
   border-bottom: 1px solid #FFFFFF;
 
+  &__btn{
+    border-radius: 100px;
+    border: 2px solid var(--white, #FFF);
+    background: transparent;
+    color: var(--white, #FFF);
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 30px;
+
+    &:hover{
+      border-radius: 100px;
+      border: 2px solid var(--white, #FFF);
+      background: var(--yellow, #FAE620);
+      padding: 10px 30px;
+      color: var(--darkblue, #222236);
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+
   &__nav{
     display: flex;
     align-items: center;

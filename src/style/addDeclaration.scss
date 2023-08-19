@@ -1,0 +1,88 @@
+.add{
+  padding: 100px 0 50px;
+
+  &__form{
+    margin-left: 300px;
+  }
+
+  &__title{
+    color: #FFF;
+    font-size: 32px;
+    font-weight: 500;
+  }
+  &__subtitle{
+    color: #FFF;
+    font-size: 25px;
+    font-weight: 400;
+    margin: 15px 0 10px;
+  }
+  &__images{
+    padding: 15px 20px;
+    background: rgb(240, 242, 247);
+    width: 222px;
+    text-align: center;
+    border-radius: 10px;
+
+    span{
+      font-size: 30px;
+      color: rgb(115, 125, 155);
+    }
+    &-title{
+      color: #FAE620;
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0 0 6px;
+    }
+    &-text{
+      color: #000;
+      font-size: 16px;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+  }
+  &__btn{
+    border-radius: 100px;
+    border: 2px solid var(--white, #FFF);
+    background: transparent;
+    color: var(--white, #FFF);
+    font-size: 20px;
+    font-weight: 500;
+    padding:  10px 20px;
+
+    &:hover{
+      border-radius: 100px;
+      border: 2px solid var(--white, #FFF);
+      background: var(--yellow, #FAE620);
+      padding:  10px 20px;
+      color: var(--darkblue, #222236);
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+  &__input{
+    width: 200px;
+    padding: 15px 10px;
+    border-radius: 15px;
+    background: transparent;
+    border: 1px solid #FAE620;
+
+    &::placeholder{
+      color: rgba(255, 255, 255, 0.70);
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+  &__textarea{
+    background: transparent;
+    padding: 15px 20px;
+    height: 100px;
+    border-radius: 15px;
+    border: 1px solid #FAE620;
+    width: 400px;
+    &::placeholder{
+      color: rgba(255, 255, 255, 0.70);
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+}
