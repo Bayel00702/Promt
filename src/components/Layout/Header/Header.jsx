@@ -3,10 +3,12 @@ import Logo from '../../../assets/Logo.png'
 import {AiOutlineSearch,AiOutlineTwitter,AiOutlineUser} from 'react-icons/ai';
 import {BsFacebook,BsInstagram} from 'react-icons/bs';
 import {Link} from 'react-router-dom'
+import {useSelector} from "react-redux";
 
 
 
 const Header = () => {
+
     return (
         <header className="header">
             <div className="container">
@@ -45,7 +47,7 @@ const Header = () => {
                             <Link className="header__right-icons" to=''><BsFacebook/></Link>
                             <Link className="header__right-icons" to=''><BsInstagram/></Link>
                             <Link className="header__right-icons" to=''><AiOutlineTwitter/></Link>
-                            <Link className="header__right-icons" to='/room'><AiOutlineUser/></Link>
+                            <Link className="header__right-icons" to={localStorage.getItem('@@remember-rootState') !== null ? '/room' : '/login'}><AiOutlineUser/></Link>
                         </span>
                     </div>
                     <Link to='/adddeclaration' className="header__btn">Подать объявление</Link>

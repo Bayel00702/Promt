@@ -1,21 +1,40 @@
-import React, {useState,useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {HiOutlineMail} from 'react-icons/hi';
 import {BiSolidKey} from 'react-icons/bi';
 import {BsTrashFill} from 'react-icons/bs'
 import {useForm} from "react-hook-form";
 import {AiFillEyeInvisible, AiFillEye,AiFillPhone} from 'react-icons/ai'
 import PromtsCard from "../../components/PromtsCard/PromtsCard";
+import axios from "../../utils/axios";
+import {useDispatch, useSelector} from "react-redux";
+import {resetPass} from "../../redux/reducers/resetPass";
 
 const Room = () => {
 
 
     const [passwordView, setPasswordView] = useState(false);
-    const password = useRef();
+    const neWPassword = useRef();
 
     const [tab, setTab] = useState("Profile settings");
     const [tab2, setTab2] = useState("Omurzakov Sanjarbek");
 
+    const {oldPassword, newPassword} = useSelector(store => store.password);
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(resetPass())
+    }, []);
+
+    // function  resetPwd(data) {
+    //     let body = {
+    //         email: "konurbaev11111@gmail.com",
+    //         oldPassword: "baner3214",
+    //         newPassword: "baner0000"
+    //     }
+    //     axios.patch("/reset/password", body).then(res => console.log(res))
+    // };
+    //
+    // resetPwd()
 
     const {
         register,
@@ -28,7 +47,9 @@ const Room = () => {
     } = useForm({
         mode: "onBlur"
     });
-    password.current = watch("password");
+    neWPassword.current = watch("newPassword");
+
+
 
     return (
         <section className="room">
@@ -77,11 +98,13 @@ const Room = () => {
                                         <button className="room__right-btn">Save</button>
                                     </div>
                                     :
-                                    <form className="room__pass">
+                                    <form
+                                        // onSubmit={handleSubmit(resetPwd)}
+                                        className="room__pass">
                                         <label htmlFor="" className="login__form-label">
                                             <h3 className="login__form-title">Current Password</h3>
                                             <label htmlFor="" className="login__form-pass room__pass-input">
-                                                <input placeholder='Current Password' type={passwordView ? 'text' : 'password'} className="login__form-input2" {...register('password', {
+                                                <input placeholder='Current Password' type={passwordView ? 'text' : 'password'} className="login__form-input2" {...register('old-password', {
                                                     required: {
                                                         message: "Пароль обязателен к заполнению",
                                                         value: true
@@ -104,7 +127,7 @@ const Room = () => {
                                         <label htmlFor="" className="login__form-label">
                                             <h3 className="login__form-title">New password</h3>
                                             <label htmlFor="" className="login__form-pass room__pass-input">
-                                                <input placeholder='Password' type={passwordView ? 'text' : 'password'} className="login__form-input2" {...register('password', {
+                                                <input placeholder='Password' type={passwordView ? 'text' : 'password'} className="login__form-input2" {...register('newPassword', {
                                                     required: {
                                                         message: "Пароль обязателен к заполнению",
                                                         value: true
@@ -129,9 +152,9 @@ const Room = () => {
                                             <h3 className="login__form-title">Confirm the password</h3>
                                             <div className="forms__form-field">
                                                 <label htmlFor="" className="login__form-pass room__pass-input">
-                                                    <input type={passwordView ? 'text' : 'password'}  {...register('confirmPwd', {
+                                                    <input type={passwordView ? 'text' : 'password'}  {...register('confirm-password', {
                                                         validate: value =>
-                                                            value === password.current || "The password don't match"
+                                                            value === neWPassword.current || "The password don't match"
                                                     })} className='login__form-input2'  placeholder='Confirm your Password' />
 
                                                     <span onClick={() => setPasswordView(prev => !prev)}>

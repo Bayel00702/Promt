@@ -65,6 +65,9 @@
     border-radius: 15px;
     background: transparent;
     border: 1px solid #FAE620;
+    color: rgba(255, 255, 255, 0.70);
+    font-size: 14px;
+    font-weight: 400;
 
     &::placeholder{
       color: rgba(255, 255, 255, 0.70);
@@ -79,6 +82,9 @@
     border-radius: 15px;
     border: 1px solid #FAE620;
     width: 400px;
+    color: rgba(255, 255, 255, 0.70);
+    font-size: 14px;
+    font-weight: 400;
     &::placeholder{
       color: rgba(255, 255, 255, 0.70);
       font-size: 14px;
