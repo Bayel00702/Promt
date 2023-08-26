@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {AiFillCamera} from 'react-icons/ai'
 import InputMask from "react-input-mask";
 import {useForm} from "react-hook-form";
@@ -13,7 +13,7 @@ const AddDeclaration = () => {
     const navigate = useNavigate();
     const {orderEl} = useSelector(store => store.order);
 
-    console.log(orderEl)
+    const [images, setImages] = useState([]);
     const {
         register,
         handleSubmit,
@@ -23,9 +23,8 @@ const AddDeclaration = () => {
 
     } = useForm();
 
-
     const onSubmit = (data) => {
-        axios.post('/order', {...data,...orderEl})
+        axios.post('/order', {...data,...orderEl, image: images})
             .then(res => {
                 dispatch(order(res.data));
                 navigate('/');
@@ -33,6 +32,46 @@ const AddDeclaration = () => {
             })
             .catch((err) => console.log(err));
     };
+    // const ImageUpload = () => {
+    //
+    //
+    //
+    //
+    //     const handleUpload = () => {
+    //         if (selectedImage) {
+    //             dispatch(uploadImage(selectedImage))
+    //                 .then((response) => {
+    //                 })
+    //                 .catch((error) => {
+    //                     console.error('Error uploading image:', error);
+    //                 });
+    //         }
+    //     };
+    // }
+
+    //
+    const [selectedImage, setSelectedImage] = useState(null);
+    const handleImageChange = (event) => {
+                setSelectedImage(event.target.files[0]);
+                console.log(event.target.files[0])
+    };
+    const addImage = async (file) => {
+        console.log(file);
+        const formData = new FormData();
+        formData.append('image', file);
+        await axios.post('/upload', file,{
+              headers: {
+                  'Content-Type': 'multipart/form-data',
+              },
+          }
+        )
+              .then(res => {
+                  setImages(res.data)
+              })
+              .catch(err => console.log(err)
+
+              )
+        };
 
 
 
@@ -56,7 +95,8 @@ const AddDeclaration = () => {
                             <h4 className="add__subtitle">Upload a photo</h4>
                             <div className="add__images">
                                 <span> <AiFillCamera/></span>
-                                <input type="file"/>
+                                <input onChange={handleImageChange} accept='image/*'  className="add__images-input" type="file"/>
+                                <button onClick={() => addImage(selectedImage)} type="button">Загрузить</button>
                                 <h3 className="add__images-title">Add a photo</h3>
                                 <p className="add__images-text">The main photo will be displayed in the search results</p>
                             </div>
@@ -67,7 +107,7 @@ const AddDeclaration = () => {
                                         message: 'Обязательно к заполнению',
                                         value: true
                                     }
-                                })} name="posting description" id="" cols="30" rows="10" placeholder='Selling Samsung Galaxy S9 in perfect condition. Bought 1 year ago. Reason for selling: buying a new phone'/>
+                                })} placeholder='Selling Samsung Galaxy S9 in perfect condition. Bought 1 year ago. Reason for selling: buying a new phone'/>
                                 <p className='login__form-error'>{errors.descrption && errors.descrption?.message}</p>
 
                             </label>

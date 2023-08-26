@@ -10,7 +10,7 @@ const store = configureStore({
     reducer: rememberReducer({
         auth,
         password,
-        order
+        order,
 
     }),
     enhancers: [rememberEnhancer(window.localStorage, rememberedKeys,{persistWholeStore: true})]

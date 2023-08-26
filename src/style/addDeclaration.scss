@@ -19,9 +19,13 @@
   &__images{
     padding: 15px 20px;
     background: rgb(240, 242, 247);
-    width: 222px;
     text-align: center;
     border-radius: 10px;
+    width: 30%;
+    &-input{
+      background: transparent;
+      color: red;
+    }
 
     span{
       font-size: 30px;

@@ -8,15 +8,13 @@ export const orderSlice = createSlice({
     initialState: {
         orderEl:{
             creatorId: creatorId,
-            views: 0
-
+            views: 0,
         }
     },
     reducers: {
        order: (state, action) => {
            state.order = action.payload.order;
        },
-
     }
 });
 
