@@ -6,35 +6,36 @@ import {useForm} from "react-hook-form";
 import {AiFillEyeInvisible, AiFillEye,AiFillPhone} from 'react-icons/ai'
 import PromtsCard from "../../components/PromtsCard/PromtsCard";
 import axios from "../../utils/axios";
-import {useDispatch, useSelector} from "react-redux";
-import {resetPass} from "../../redux/reducers/resetPass";
+import {useNavigate} from 'react-router-dom'
 
 const Room = () => {
 
 
     const [passwordView, setPasswordView] = useState(false);
     const neWPassword = useRef();
+    const navigate = useNavigate();
 
     const [tab, setTab] = useState("Profile settings");
     const [tab2, setTab2] = useState("Omurzakov Sanjarbek");
+    const token = localStorage.getItem("@@remember-rootState") ? JSON.parse(localStorage.getItem("@@remember-rootState")).auth.token : "";
 
-    const {oldPassword, newPassword} = useSelector(store => store.password);
-    const dispatch = useDispatch();
+    console.log(token);
 
-    useEffect(() => {
-        dispatch(resetPass())
-    }, []);
+    const onSubmit = (data) => {
+        axios.post('/reset/password', data,{
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`
+            },
 
-    // function  resetPwd(data) {
-    //     let body = {
-    //         email: "konurbaev11111@gmail.com",
-    //         oldPassword: "baner3214",
-    //         newPassword: "baner0000"
-    //     }
-    //     axios.patch("/reset/password", body).then(res => console.log(res))
-    // };
-    //
-    // resetPwd()
+        }).then(({data}) =>
+            {
+                console.log(data);
+                navigate('/')
+            }
+        );
+
+    };
 
     const {
         register,
@@ -99,35 +100,34 @@ const Room = () => {
                                     </div>
                                     :
                                     <form
-                                        // onSubmit={handleSubmit(resetPwd)}
+                                        onSubmit={handleSubmit(onSubmit)}
                                         className="room__pass">
                                         <label htmlFor="" className="login__form-label">
-                                            <h3 className="login__form-title">Current Password</h3>
+                                            <h3 className="login__form-title">Email</h3>
                                             <label htmlFor="" className="login__form-pass room__pass-input">
-                                                <input placeholder='Current Password' type={passwordView ? 'text' : 'password'} className="login__form-input2" {...register('old-password', {
+                                                <input placeholder='Current email' className="login__form-input2" {...register('email', {
                                                     required: {
-                                                        message: "Пароль обязателен к заполнению",
+                                                        message: 'Email обязательно к заполнению',
                                                         value: true
                                                     },
+                                                    minLength: {
+                                                        message: 'Минимум 10 символа',
+                                                        value: 10
+                                                    },
                                                     pattern: {
-                                                        value: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/g,
-                                                        message: 'Пароль должен содержать не менее 8 символов, заглавную букву, число!'
+                                                        message: 'Напишите правильно свой email',
+                                                        value:  /^[^ ]+@[^ ]+\.[a-z]{2,5}$/
                                                     }
                                                 })}/>
-                                                <span onClick={() => setPasswordView(prev => !prev)}>
-                                {
-                                    passwordView ? <AiFillEyeInvisible/> : <AiFillEye/>
-                                }
-                            </span>
                                             </label>
                                             <p className='login__form-error'>
-                                                {errors.password && errors.password?.message}
+                                                {errors.email && errors.email?.message}
                                             </p>
                                         </label>
                                         <label htmlFor="" className="login__form-label">
-                                            <h3 className="login__form-title">New password</h3>
+                                            <h3 className="login__form-title">Current password</h3>
                                             <label htmlFor="" className="login__form-pass room__pass-input">
-                                                <input placeholder='Password' type={passwordView ? 'text' : 'password'} className="login__form-input2" {...register('newPassword', {
+                                                <input placeholder='Password' type={passwordView ? 'text' : 'password'} className="login__form-input2" {...register('oldPassword', {
                                                     required: {
                                                         message: "Пароль обязателен к заполнению",
                                                         value: true
@@ -144,7 +144,7 @@ const Room = () => {
                             </span>
                                             </label>
                                             <p className='login__form-error'>
-                                                {errors.password && errors.password?.message}
+                                                {errors.oldPassword && errors.oldPassword?.message}
                                             </p>
                                         </label>
 
@@ -152,9 +152,15 @@ const Room = () => {
                                             <h3 className="login__form-title">Confirm the password</h3>
                                             <div className="forms__form-field">
                                                 <label htmlFor="" className="login__form-pass room__pass-input">
-                                                    <input type={passwordView ? 'text' : 'password'}  {...register('confirm-password', {
-                                                        validate: value =>
-                                                            value === neWPassword.current || "The password don't match"
+                                                    <input type={passwordView ? 'text' : 'password'}  {...register('newPassword', {
+                                                        required: {
+                                                            message: "Пароль обязателен к заполнению",
+                                                            value: true
+                                                        },
+                                                        pattern: {
+                                                            value: /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/g,
+                                                            message: 'Пароль должен содержать не менее 8 символов, заглавную букву, число!'
+                                                        }
                                                     })} className='login__form-input2'  placeholder='Confirm your Password' />
 
                                                     <span onClick={() => setPasswordView(prev => !prev)}>
@@ -166,10 +172,10 @@ const Room = () => {
 
                                             </div>
                                             <p className='forms__form-error'>
-                                                {errors.confirmPwd && errors.confirmPwd?.message}
+                                                {errors.newPassword && errors.newPassword?.message}
                                             </p>
                                         </label>
-
+                                        <button type='submit'>Submit</button>
                                     </form>
                             }
                         </div>
