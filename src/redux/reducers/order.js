@@ -1,15 +1,22 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {authSlice} from "./auth";
+
+const creatorId = localStorage.getItem("@@remember-rootState") ? JSON.parse(localStorage.getItem("@@remember-rootState")).auth.user._id : "";
+
 
 export const orderSlice = createSlice({
    name: "order",
     initialState: {
-        order: null
+        orderEl:{
+            creatorId: creatorId,
+            views: 0
+
+        }
     },
     reducers: {
        order: (state, action) => {
            state.order = action.payload.order;
-       }
+       },
+
     }
 });
 

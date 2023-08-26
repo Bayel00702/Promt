@@ -1,10 +1,13 @@
 import axios from 'axios'
 
-const token = JSON.parse(localStorage.getItem("@@remember-rootState")).auth.token;
+
+
+const token = localStorage.getItem("@@remember-rootState") ? JSON.parse(localStorage.getItem("@@remember-rootState")).auth.token : "";
+console.log(token)
 const instance = axios.create({
     baseURL: 'http://localhost:4444',
     headers: {
-        "Authorization": `Bearer ${token}`
+        "authorization": `Bearer ${token ? token : ""}`
     }
 });
 

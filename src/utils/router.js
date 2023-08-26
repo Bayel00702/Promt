@@ -5,7 +5,6 @@ import Catalog from "../pages/Catalog/Catalog";
 import AddDeclaration from "../pages/AddDeclaration/AddDeclaration";
 import Declaration from "../pages/Declaration/Declaration";
 import LogIn from "../pages/LogIn/LogIn";
-import MyDeclaration from "../pages/MyDeclaration/MyDeclaration";
 import OneUser from "../pages/OneUser/OneUser";
 import Register from "../pages/Register/Register";
 import Room from "../pages/Room/Room";
@@ -33,10 +32,6 @@ export default function Router () {
                 {
                     path: 'declaration',
                     element: <Declaration/>
-                },
-                {
-                    path: '/mydeclaration',
-                    element: <MyDeclaration/>
                 },
                 {
                     path: '/oneuser',
