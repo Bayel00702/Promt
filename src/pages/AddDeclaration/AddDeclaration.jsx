@@ -14,6 +14,7 @@ const AddDeclaration = () => {
     const {orderEl} = useSelector(store => store.order);
 
     const [images, setImages] = useState([]);
+    const [gettedImageUrl, setGettedImageUrl] = useState("");
     const {
         register,
         handleSubmit,
@@ -24,7 +25,7 @@ const AddDeclaration = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        axios.post('/order', {...data,...orderEl, image: images})
+        axios.post('/order', {...data,...orderEl, image: gettedImageUrl})
             .then(res => {
                 dispatch(order(res.data));
                 navigate('/');
@@ -32,41 +33,24 @@ const AddDeclaration = () => {
             })
             .catch((err) => console.log(err));
     };
-    // const ImageUpload = () => {
-    //
-    //
-    //
-    //
-    //     const handleUpload = () => {
-    //         if (selectedImage) {
-    //             dispatch(uploadImage(selectedImage))
-    //                 .then((response) => {
-    //                 })
-    //                 .catch((error) => {
-    //                     console.error('Error uploading image:', error);
-    //                 });
-    //         }
-    //     };
-    // }
 
-    //
     const [selectedImage, setSelectedImage] = useState(null);
     const handleImageChange = (event) => {
                 setSelectedImage(event.target.files[0]);
                 console.log(event.target.files[0])
     };
+
     const addImage = async (file) => {
-        console.log(file);
-        const formData = new FormData();
-        formData.append('image', file);
-        await axios.post('/upload', file,{
+        let formData = new FormData();
+        formData.append('file', file);
+        await axios.post('/upload', formData,{
               headers: {
                   'Content-Type': 'multipart/form-data',
               },
           }
         )
               .then(res => {
-                  setImages(res.data)
+                  setGettedImageUrl(res.data.url)
               })
               .catch(err => console.log(err)
 
