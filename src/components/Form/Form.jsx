@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {AiFillEyeInvisible, AiFillEye} from 'react-icons/ai'
 import {Link, useLocation, useNavigate} from 'react-router-dom'
 import {useForm} from "react-hook-form";
+import {AiFillCamera} from 'react-icons/ai'
 import InputMask from 'react-input-mask';
 import {useDispatch, useSelector} from "react-redux";
 import {authUser} from '../../redux/reducers/auth';
@@ -30,7 +31,7 @@ const Form = () => {
     });
 
     const handleRegister = (data) => {
-        axios.post('/register', data)
+        axios.post('/register', {...data, image: getImageUrl})
             .then(res =>
             {
                 dispatch(authUser(res.data));
@@ -61,6 +62,31 @@ const Form = () => {
         }
     };
 
+    const [image, setImage] = useState([]);
+    const [getImageUrl, setGetImageUrl] = useState("");
+
+    const [selecttedImage, setSeltectedImage] = useState(null);
+    const handleImageChanges = (event) => {
+        setSeltectedImage(event.target.files[0]);
+        console.log(event.target.files[0])
+    };
+
+    const addImage = async (file) => {
+        let formData = new FormData();
+        formData.append('file', file);
+        await axios.post('/upload', formData,{
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            }
+        )
+            .then(res => {
+                setGetImageUrl(res.data.url)
+            })
+            .catch(err => console.log(err)
+
+            )
+    };
 
     return (
         <div className="login">
@@ -193,6 +219,14 @@ const Form = () => {
                             {errors.password && errors.password?.message}
                         </p>
                     </label>
+                    <h4 className="add__subtitle">Upload a photo</h4>
+                    <div className="add__images">
+                        <span> <AiFillCamera/></span>
+                        <input onChange={handleImageChanges} accept='image/*'  className="add__images-input" type="file"/>
+                        <button onClick={() => addImage(selecttedImage)} type="button">Загрузить</button>
+                        <h3 className="add__images-title">Add a photo</h3>
+                        <p className="add__images-text">The main photo will be displayed in the search results</p>
+                    </div>
                     {
                         location.pathname === '/register' ?
                             <label htmlFor="" className="login__form-label">
