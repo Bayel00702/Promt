@@ -23,11 +23,11 @@ const userSlice = createSlice({
     },
     reducers: {
         addInFavorites: (state, {payload}) => {
-            const existingIndex = state.favorites.some((item) => item.id === payload.id);
+            const existingIndex = state.favorites.some((item) => item._id === payload._id);
 
             if (existingIndex) {
                 // Удаляем элемент, если он уже существует в избранных
-                state.favorites = state.favorites.filter(item => item.id !== payload.id)
+                state.favorites = state.favorites.filter(item => item._id !== payload._id)
             } else {
                 // Добавляем элемент, если его нет в избранных
                state.favorites = [...state.favorites, payload]
