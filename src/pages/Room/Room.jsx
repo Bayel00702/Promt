@@ -6,10 +6,11 @@ import {useForm} from "react-hook-form";
 import {AiFillEyeInvisible, AiFillEye,AiFillPhone} from 'react-icons/ai'
 import PromtsCard from "../../components/PromtsCard/PromtsCard";
 import axios from "../../utils/axios";
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
 import {logOutUser} from "../../redux/reducers/auth";
-import {getAllOrders} from "../../redux/reducers/orders";
+import {getAllUserOrders} from "../../redux/reducers/userOrders";
+import {getOneUser} from "../../redux/reducers/user";
 
 const Room = () => {
 
@@ -24,7 +25,6 @@ const Room = () => {
     const [tab2, setTab2] = useState("Omurzakov Sanjarbek");
     const token = localStorage.getItem("@@remember-rootState") ? JSON.parse(localStorage.getItem("@@remember-rootState")).auth.token : "";
 
-    console.log(token);
 
     const onSubmit = (data) => {
         axios.post('/reset/password', data,{
@@ -54,10 +54,12 @@ const Room = () => {
         mode: "onBlur"
     });
     neWPassword.current = watch("newPassword");
-    const {data} = useSelector(store => store.orders);
+    const {userOrders} = useSelector(store => store.userOrders);
+    const {id} = useParams();
+
 
     useEffect(() => {
-        dispatch(getAllOrders())
+        dispatch(getAllUserOrders(user._id));
     }, []);
 
 
@@ -194,14 +196,15 @@ const Room = () => {
                                         </form>
                                 }
                             </div>
-                            :
+                            : tab === 'My announcement' ?
                             <div className="room__row2">
                                 {
-                                    data.map((item, idx) => (
-                                        <PromtsCard item={item} key={item._id || idx}/>
+                                    userOrders.map((item) => (
+                                        <PromtsCard item={item}/>
                                     ))
                                 }
-                            </div>
+                            </div> :
+                            ''
                     }
 
                 </div>

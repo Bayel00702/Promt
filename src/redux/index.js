@@ -6,6 +6,7 @@ import order from "./reducers/order";
 import orders from "./reducers/orders";
 import oneOrder from "./reducers/product";
 import oneUser from "./reducers/user";
+import userOrders from "./reducers/userOrders";
 
 const rememberedKeys = ['auth'];
 
@@ -17,6 +18,7 @@ const store = configureStore({
         orders,
         oneOrder,
         oneUser,
+        userOrders,
 
     }),
     enhancers: [rememberEnhancer(window.localStorage, rememberedKeys,{persistWholeStore: true})]

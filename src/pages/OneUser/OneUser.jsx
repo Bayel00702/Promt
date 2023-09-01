@@ -1,23 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom'
 import PromtsCard from "../../components/PromtsCard/PromtsCard";
-import PopularCard from "../../components/PopularCard/PopularCard";
 import {useDispatch, useSelector} from "react-redux";
 import {getOneUser} from "../../redux/reducers/user";
+import {getAllUserOrders} from "../../redux/reducers/userOrders";
 
 const OneUser = () => {
     const [tab, setTab] = useState("Not active");
 
     const dispatch = useDispatch();
     const {user} = useSelector(store => store.oneUser);
+    const {userOrders} = useSelector(store => store.userOrders);
     const {id} = useParams();
 
-    console.log(user)
+
 
     useEffect(() => {
-        dispatch(getOneUser(id))
+        dispatch(getOneUser(id));
+        dispatch(getAllUserOrders(id));
     }, []);
-
+    console.log(userOrders)
 
 
     return (
@@ -39,7 +41,11 @@ const OneUser = () => {
                 </div>
                 {
                     tab === 'Announcement' ? <div className="user__bottom">
-                        <PopularCard/>
+                        {
+                            userOrders.map((item) => (
+                                <PromtsCard item={item}/>
+                            ))
+                        }
                     </div> : ''
 
                 }

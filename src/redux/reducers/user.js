@@ -17,10 +17,32 @@ const userSlice = createSlice({
     name: "user",
     initialState: {
         user: {},
+        favorites:[],
         status: '',
         error: ''
     },
-    reducers: {},
+    reducers: {
+        addInFavorites: (state, {payload}) => {
+            const existingIndex = state.favorites.findIndex(
+                (item) => item.id === payload.id
+            );
+
+            if (existingIndex !== -1) {
+                // Удаляем элемент, если он уже существует в избранных
+                state.favorites.splice(existingIndex, 1);
+            } else {
+                // Добавляем элемент, если его нет в избранных
+                state.favorites.push(payload);
+            }
+
+            // Сохраняем избранные в localStorage
+            localStorage.setItem("favorites", JSON.stringify(state.favorites));
+        },
+        deleteInFavorites: (state, {payload}) => {
+            state.favorites = state.favorites.filter((item) => item.id !== payload);
+        }
+
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getOneUser.pending, state => {
@@ -38,4 +60,5 @@ const userSlice = createSlice({
     }
 });
 
+export const {addInFavorites, deleteInFavorites} = userSlice.actions;
 export default userSlice.reducer
