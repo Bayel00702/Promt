@@ -23,16 +23,14 @@ const userSlice = createSlice({
     },
     reducers: {
         addInFavorites: (state, {payload}) => {
-            const existingIndex = state.favorites.findIndex(
-                (item) => item.id === payload.id
-            );
+            const existingIndex = state.favorites.some((item) => item.id === payload.id);
 
-            if (existingIndex !== -1) {
+            if (existingIndex) {
                 // Удаляем элемент, если он уже существует в избранных
-                state.favorites.splice(existingIndex, 1);
+                state.favorites = state.favorites.filter(item => item.id !== payload.id)
             } else {
                 // Добавляем элемент, если его нет в избранных
-                state.favorites.push(payload);
+               state.favorites = [...state.favorites, payload]
             }
 
             // Сохраняем избранные в localStorage
