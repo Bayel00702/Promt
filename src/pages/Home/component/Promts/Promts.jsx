@@ -1,7 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PromtsCard from "../../../../components/PromtsCard/PromtsCard";
+import {useDispatch, useSelector} from "react-redux";
+import {getAllOrders} from "../../../../redux/reducers/orders";
 
 const Promts = () => {
+    const dispatch = useDispatch();
+    const {data} = useSelector(store => store.orders);
+
+    useEffect(() => {
+        dispatch(getAllOrders())
+    }, []);
+
     return (
         <section className="promts">
             <div className="container">
@@ -12,9 +21,11 @@ const Promts = () => {
                 </div>
 
                 <div className="promts__row">
-                    <PromtsCard/>
-                    <PromtsCard/>
-                    <PromtsCard/>
+                    {
+                        data.map((item, idx) => (
+                            <PromtsCard item={item} key={item._id || idx}/>
+                        ))
+                    }
                 </div>
 
                 <button className="promts__btnMarket">

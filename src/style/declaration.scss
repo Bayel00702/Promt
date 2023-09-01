@@ -7,6 +7,12 @@
     justify-content: center;
   }
 
+  &__desc{
+    background: lightgrey;
+    padding: 20px 15px;
+    border-radius: 20px;
+  }
+
   &__left{
     width: 60%;
     background: gray;
@@ -32,6 +38,8 @@
       &__img{
         border-radius: 50%;
         width: 50px;
+        height: 50px;
+        object-fit: cover;
       }
       &__title{
         color: #000000;
@@ -86,8 +94,23 @@
     &-price{
       color: #FFF;
       font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 40px;
+      font-weight: 600;
+      margin-bottom: 20px;
+
+
+      &__span{
+        color: #FFF;
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 40px;
+        opacity: 0.7;
+      }
+
+      &__span1{
+        font-size: 25px;
+        font-weight: 400;
+        opacity: 0.7;
+      }
     }
     &-btn{
       border-radius: 100px;

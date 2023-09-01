@@ -1,5 +1,6 @@
 import React from 'react';
 import PromtsCard from "../../../../../components/PromtsCard/PromtsCard";
+import PopularCard from "../../../../../components/PopularCard/PopularCard";
 
 const NewestInfo = () => {
     return (
@@ -19,10 +20,10 @@ const NewestInfo = () => {
           </div>
 
           <div className="newest__row">
-              <PromtsCard/>
-              <PromtsCard/>
-              <PromtsCard/>
-              <PromtsCard/>
+              <PopularCard/>
+              <PopularCard/>
+              <PopularCard/>
+              <PopularCard/>
           </div>
         </>
     );

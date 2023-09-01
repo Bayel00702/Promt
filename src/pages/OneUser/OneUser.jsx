@@ -1,18 +1,34 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom'
 import PromtsCard from "../../components/PromtsCard/PromtsCard";
+import PopularCard from "../../components/PopularCard/PopularCard";
+import {useDispatch, useSelector} from "react-redux";
+import {getOneUser} from "../../redux/reducers/user";
 
 const OneUser = () => {
     const [tab, setTab] = useState("Not active");
+
+    const dispatch = useDispatch();
+    const {user} = useSelector(store => store.oneUser);
+    const {id} = useParams();
+
+    console.log(user)
+
+    useEffect(() => {
+        dispatch(getOneUser(id))
+    }, []);
+
+
 
     return (
         <section className="user">
             <div className="container">
                 <div className="user__profile">
-                        <img src="https://img5.lalafo.com/i/avatar/78/b6/0c/435dc351c5794a9310f8ff6283.jpeg" alt="" className="user__profile-img"/>
+                        <img src={user.image} alt="" className="user__profile-img"/>
 
                         <div className="user__profile-info">
-                            <h2 className="user__profile-name">Omurzakov Sanjarbek</h2>
-                            <p className="user__profile-date">At Promt from 22.02.20</p>
+                            <h2 className="user__profile-name">{user.name}</h2>
+                            <p className="user__profile-date">At Promt from {user.createdAt && user.createdAt.slice(0,10)}</p>
                         </div>
                     </div>
                 <div className="room__top">
@@ -23,11 +39,7 @@ const OneUser = () => {
                 </div>
                 {
                     tab === 'Announcement' ? <div className="user__bottom">
-                        <PromtsCard/>
-                        <PromtsCard/>
-                        <PromtsCard/>
-                        <PromtsCard/>
-                        <PromtsCard/>
+                        <PopularCard/>
                     </div> : ''
 
                 }

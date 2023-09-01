@@ -30,11 +30,11 @@ export default function Router () {
                     element: <AddDeclaration/>
                 },
                 {
-                    path: 'declaration',
+                    path: '/declaration/:id',
                     element: <Declaration/>
                 },
                 {
-                    path: '/oneuser',
+                    path: '/oneuser/:id',
                     element: <OneUser/>
                 },
                 {
