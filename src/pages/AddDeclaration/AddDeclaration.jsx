@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {AiFillCamera} from 'react-icons/ai'
 import InputMask from "react-input-mask";
 import {useForm} from "react-hook-form";
@@ -6,14 +6,22 @@ import axios from "../../utils/axios";
 import {useDispatch, useSelector} from "react-redux";
 import {order} from '../../redux/reducers/order'
 import {useNavigate} from "react-router-dom";
+import {getAllCategory} from "../../redux/reducers/category";
+import {getSubCategory} from "../../redux/reducers/subcategory";
 
 const AddDeclaration = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {orderEl} = useSelector(store => store.order);
+    const {category} = useSelector(store => store.category);
+    const {subcategory} = useSelector(store => store.subcategory);
+    const [btn, setBtn] = useState(false);
+    const [subCategory, setSubCategory] = useState(false);
 
-    const [images, setImages] = useState([]);
+
+    console.log(category)
+
     const [gettedImageUrl, setGettedImageUrl] = useState("");
     const {
         register,
@@ -59,6 +67,11 @@ const AddDeclaration = () => {
 
 
 
+    useEffect(() => {
+        dispatch(getAllCategory());
+        dispatch(getSubCategory(category._id))
+    }, []);
+
 
     return (
         <section className="add">
@@ -95,6 +108,28 @@ const AddDeclaration = () => {
                                 <p className='login__form-error'>{errors.descrption && errors.descrption?.message}</p>
 
                             </label>
+
+                            <span className="add__category" onClick={() => {
+                                if (setBtn) {
+                                    setBtn((prev) => !prev)
+                                }
+                            }}>Category</span>
+
+                            <div className={`add__subcategory ${btn ? 'active' : ''}`}>
+                                {
+                                    category.map((item) => (
+                                        <span className={`add__subcategory-item`} onClick={() => {
+                                            if (setSubCategory) {
+                                                setSubCategory((prev) => !prev)
+                                            }
+                                        }}>{item.name}</span>
+                                    ))
+                                }
+                            </div>
+
+                            <div className={`add__subcategory-desc ${subCategory ? 'active' : ''}`}>
+                                <span>{subcategory.subCategoryName}</span>
+                            </div>
 
                             <label htmlFor="" className="add__label">
                                 <h3 className="add__subtitle">Категория</h3>

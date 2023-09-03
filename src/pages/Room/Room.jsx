@@ -55,8 +55,6 @@ const Room = () => {
     });
     neWPassword.current = watch("newPassword");
     const {userOrders} = useSelector(store => store.userOrders);
-    const {id} = useParams();
-
 
     useEffect(() => {
         dispatch(getAllUserOrders(user._id));

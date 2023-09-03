@@ -1,6 +1,24 @@
 .add{
   padding: 100px 0 50px;
 
+  &__subcategory{
+    display: none;
+
+    &-desc{
+      display: none;
+
+      &.active{
+        display: block;
+      }
+    }
+
+    &.active{
+      display: block;
+    }
+  }
+
+
+
   &__form{
     margin-left: 300px;
   }

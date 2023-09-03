@@ -3,7 +3,6 @@ import Logo from '../../../assets/Logo.png'
 import {AiOutlineSearch,AiOutlineTwitter,AiOutlineUser} from 'react-icons/ai';
 import {BsFacebook,BsInstagram} from 'react-icons/bs';
 import {Link} from 'react-router-dom'
-import {useSelector} from "react-redux";
 
 
 
@@ -35,7 +34,11 @@ const Header = () => {
                             <li className="header__item"><Link to="/catalog" className="header__item">Marketplace</Link></li>
                             <li className="header__item"><Link to="" className="header__item">Generate</Link></li>
                             <li className="header__item"><Link to="" className="header__item">Hire</Link></li>
-                            <li className="header__item"><Link to="/login" className="header__item">Login</Link></li>
+                            {
+                                JSON.parse(localStorage.getItem('@@remember-rootState')).auth.user === null ?
+                                    <li className="header__item"><Link to="/login" className="header__item">Login</Link></li>
+                                    : ''
+                            }
                             <li className="header__item"><Link to="" className="header__item">Sell</Link><span><svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M8.35355 4.85355C8.54882 4.65829 8.54882 4.34171 8.35355 4.14645L5.17157 0.964467C4.97631 0.769204 4.65973 0.769204 4.46447 0.964466C4.2692 1.15973 4.2692 1.47631 4.46447 1.67157L7.29289 4.5L4.46447 7.32843C4.2692 7.52369 4.2692 7.84027 4.46447 8.03553C4.65973 8.2308 4.97631 8.2308 5.17157 8.03553L8.35355 4.85355ZM-4.37114e-08 5L8 5L8 4L4.37114e-08 4L-4.37114e-08 5Z" fill="white"/>
 </svg>
@@ -47,10 +50,21 @@ const Header = () => {
                             <Link className="header__right-icons" to=''><BsFacebook/></Link>
                             <Link className="header__right-icons" to=''><BsInstagram/></Link>
                             <Link className="header__right-icons" to=''><AiOutlineTwitter/></Link>
-                            <Link className="header__right-icons" to={localStorage.getItem('@@remember-rootState') !== null ? '/room' : '/login'}><AiOutlineUser/></Link>
+                            {
+                                JSON.parse(localStorage.getItem('@@remember-rootState')).auth.user !== null ?
+                                    <Link className="header__right-icons" to={'/room'}><AiOutlineUser/></Link>
+                                    : ''
+
+                            }
+
                         </span>
                     </div>
-                    <Link to='/adddeclaration' className="header__btn">Подать объявление</Link>
+                    {
+                        JSON.parse(localStorage.getItem('@@remember-rootState')).auth.user !== null ?
+                            <Link to='/adddeclaration' className="header__btn">Подать объявление</Link>
+                            : ''
+
+                    }
                 </nav>
             </div>
         </header>
