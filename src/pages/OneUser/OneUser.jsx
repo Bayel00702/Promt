@@ -19,7 +19,6 @@ const OneUser = () => {
         dispatch(getOneUser(id));
         dispatch(getAllUserOrders(id));
     }, []);
-    console.log(userOrders)
 
 
     return (

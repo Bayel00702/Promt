@@ -38,7 +38,7 @@ const userSlice = createSlice({
         },
         deleteInFavorites: (state, {payload}) => {
             state.favorites = state.favorites.filter((item) => item.id !== payload);
-        }
+        },
 
     },
     extraReducers: (builder) => {

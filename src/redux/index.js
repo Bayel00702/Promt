@@ -9,6 +9,7 @@ import oneUser from "./reducers/user";
 import userOrders from "./reducers/userOrders";
 import category from "./reducers/category";
 import subcategory from "./reducers/subcategory";
+import upload from "./reducers/resetUpload";
 
 const rememberedKeys = ['auth'];
 
@@ -23,6 +24,7 @@ const store = configureStore({
         userOrders,
         category,
         subcategory,
+        upload,
 
     }),
     enhancers: [rememberEnhancer(window.localStorage, rememberedKeys,{persistWholeStore: true})]

@@ -8,21 +8,24 @@ import PromtsCard from "../../components/PromtsCard/PromtsCard";
 import axios from "../../utils/axios";
 import {useNavigate, useParams} from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
-import {logOutUser} from "../../redux/reducers/auth";
+import {logOutUser, setUser} from "../../redux/reducers/auth";
 import {getAllUserOrders} from "../../redux/reducers/userOrders";
 import {getOneUser} from "../../redux/reducers/user";
 
 const Room = () => {
 
-
     const [passwordView, setPasswordView] = useState(false);
-    const neWPassword = useRef();
     const navigate = useNavigate();
+
     const {user} = useSelector(store => store.auth);
+    const {userOrders} = useSelector(store => store.userOrders);
+
     const dispatch = useDispatch();
 
     const [tab, setTab] = useState("Profile settings");
     const [tab2, setTab2] = useState("Omurzakov Sanjarbek");
+    const [selectedImage, setSelectedImage] = useState(null);
+
     const token = localStorage.getItem("@@remember-rootState") ? JSON.parse(localStorage.getItem("@@remember-rootState")).auth.token : "";
 
 
@@ -39,8 +42,25 @@ const Room = () => {
                 navigate('/')
             }
         );
-
     };
+    const handleImageChange = (event) => {
+        setSelectedImage(event.target.files[0]);
+        console.log(event.target.files[0])
+    };
+
+    const resUpload = async (file) => {
+        let formData = new FormData();
+        formData.append('file', file);
+        await axios.post(`/reset/upload/${user._id}`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        }).then(({data}) => {
+            console.log(data)
+            dispatch(setUser(data.user))
+        })
+    };
+
 
     const {
         register,
@@ -53,12 +73,16 @@ const Room = () => {
     } = useForm({
         mode: "onBlur"
     });
-    neWPassword.current = watch("newPassword");
-    const {userOrders} = useSelector(store => store.userOrders);
+
 
     useEffect(() => {
+        dispatch(getOneUser(user._id))
         dispatch(getAllUserOrders(user._id));
     }, []);
+
+
+
+
 
 
         return (
@@ -100,6 +124,7 @@ const Room = () => {
                                             <div className="room__right-image">
                                                 <img src={user.image} alt="" className="room__right-image__img"/>
                                                 <span><BsTrashFill/></span>
+                                                <input onChange={handleImageChange} accept='image/*' type="file"/>
                                             </div>
                                             <label htmlFor="" className="room__right-label">
                                                 <h3 className="room__right-subtitle">My name </h3>
@@ -111,7 +136,7 @@ const Room = () => {
                                                 <input placeholder='Tell me something about yourself' type="text" className="room__right-input2"/>
                                             </label>
 
-                                            <button className="room__right-btn">Save</button>
+                                            <button  onClick={() => resUpload(selectedImage)} className="room__right-btn">Save</button>
                                         </div>
                                         :
                                         <form

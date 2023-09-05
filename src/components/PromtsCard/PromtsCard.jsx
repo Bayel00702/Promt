@@ -9,14 +9,13 @@ const PromtsCard = ({item}) => {
 
     const dispatch = useDispatch()
 
-    const {favorites} = useSelector(state => state.oneUser)
 
 
     return (
         <>
             <div  className="promts__card">
                 <Link to={`/declaration/${item._id}`}>
-                    <img src={item.image && item.image} alt={item.title} className="promts__card-img"/>
+                    <img src={item.image } alt={item.title} className="promts__card-img"/>
                 </Link>
                 <div className="promts__card-infos">
                     <div className="promts__card-info">

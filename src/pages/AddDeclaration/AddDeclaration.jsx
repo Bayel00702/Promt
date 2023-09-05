@@ -13,14 +13,15 @@ const AddDeclaration = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const {orderEl} = useSelector(store => store.order);
     const {category} = useSelector(store => store.category);
     const {subcategory} = useSelector(store => store.subcategory);
+
     const [btn, setBtn] = useState(false);
     const [subCategory, setSubCategory] = useState(false);
-
-
-    console.log(category)
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedSubcategory, setSelectedSubcategory] = useState('');
 
     const [gettedImageUrl, setGettedImageUrl] = useState("");
     const {
@@ -33,9 +34,10 @@ const AddDeclaration = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        axios.post('/order', {...data,...orderEl, image: gettedImageUrl})
+        axios.post('/order', {...data,...orderEl, image: gettedImageUrl, category: selectedCategory, subcategory: selectedSubcategory})
             .then(res => {
                 dispatch(order(res.data));
+
                 navigate('/');
                 console.log(data)
             })
@@ -69,9 +71,7 @@ const AddDeclaration = () => {
 
     useEffect(() => {
         dispatch(getAllCategory());
-        dispatch(getSubCategory(category._id))
     }, []);
-
 
     return (
         <section className="add">
@@ -93,8 +93,7 @@ const AddDeclaration = () => {
                             <div className="add__images">
                                 <span> <AiFillCamera/></span>
                                 <input onChange={handleImageChange} accept='image/*'  className="add__images-input" type="file"/>
-                                <button onClick={() => addImage(selectedImage)} type="button">Загрузить</button>
-                                <h3 className="add__images-title">Add a photo</h3>
+                                <button onClick={() => addImage(selectedImage)} type="button" className="add__images-title">Add a photo</button>
                                 <p className="add__images-text">The main photo will be displayed in the search results</p>
                             </div>
                             <label htmlFor="" className="add__label">
@@ -109,37 +108,46 @@ const AddDeclaration = () => {
 
                             </label>
 
-                            <span className="add__category" onClick={() => {
-                                if (setBtn) {
-                                    setBtn((prev) => !prev)
-                                }
-                            }}>Category</span>
 
-                            <div className={`add__subcategory ${btn ? 'active' : ''}`}>
-                                {
-                                    category.map((item) => (
-                                        <span className={`add__subcategory-item`} onClick={() => {
-                                            if (setSubCategory) {
-                                                setSubCategory((prev) => !prev)
-                                            }
-                                        }}>{item.name}</span>
-                                    ))
-                                }
-                            </div>
-
-                            <div className={`add__subcategory-desc ${subCategory ? 'active' : ''}`}>
-                                <span>{subcategory.subCategoryName}</span>
-                            </div>
 
                             <label htmlFor="" className="add__label">
                                 <h3 className="add__subtitle">Категория</h3>
-                                <input placeholder="Категория" {...register('category', {
-                                    required: {
-                                        message: 'Обязательно к заполнению',
-                                        value: true
-                                    },
-                                })} type="text" className="add__input"/>
-                                <p className='login__form-error'>{errors.category && errors.category?.message}</p>
+                                <p className="add__category" onClick={() => {
+                                    if (setBtn) {
+                                        setBtn((prev) => !prev);
+                                    }
+
+                                }}>Category</p>
+
+                                <div className={`add__subcategory ${btn ? 'active' : ''}`}>
+                                    {
+                                        category.map((item) => (
+                                            <p {...register('category')}
+                                               className={`add__subcategory-item ${selectedCategory === item.name ? 'selected' : ''}`}
+                                               onClick={() => {
+                                                if (setSubCategory) {
+                                                    setSubCategory((prev) => !prev)
+                                                }
+                                                setSelectedCategory(item.name);
+                                                dispatch(getSubCategory(item._id))
+
+                                            }}>{item.name}</p>
+                                        ))
+                                    }
+                                </div>
+
+                                <div className={`add__subcategory-desc ${subCategory ? 'active' : ''}`}>
+                                    {
+                                        subcategory.map((item) => (
+                                            <p {...register('subcategory')}
+                                               className={`add__subcategory-desc__item ${selectedSubcategory === item.subCategoryName ? 'selectedSub': ''}`}
+                                                onClick={() => {
+                                                    setSelectedSubcategory(item.subCategoryName)
+                                                }}
+                                            >{item.subCategoryName}</p>
+                                        ))
+                                    }
+                                </div>                                <p className='login__form-error'>{errors.category && errors.category?.message}</p>
                             </label>
                             <label htmlFor="" className="add__label">
                                 <h3 className="add__subtitle">Цена</h3>

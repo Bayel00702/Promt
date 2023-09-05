@@ -16,7 +16,7 @@ export const  getSubCategory = createAsyncThunk(
 const subCategorySlice = createSlice({
     name: "subcategory",
     initialState: {
-        subcategory: {},
+        subcategory: [],
         isLoading: false,
         error: ''
     },
