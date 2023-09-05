@@ -53,12 +53,12 @@ const Form = () => {
     };
 
     const submitForm = (data) => {
-        let {...account} = data;
+        let {...user} = data;
 
         if (location.pathname === '/login'){
-            loginUser(account)
+            loginUser(user)
         } else {
-            handleRegister(account)
+            handleRegister(user)
         }
     };
 
