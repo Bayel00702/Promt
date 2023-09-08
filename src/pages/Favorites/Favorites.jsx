@@ -10,7 +10,7 @@ const Favorites = () => {
 
     return (
         <section className="favorites">
-            <div className="section">
+            <div className="container">
                 <div className="favorites__row">
                     {
                         favorites.map((item) => (
