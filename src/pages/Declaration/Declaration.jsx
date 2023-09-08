@@ -17,7 +17,6 @@ const Declaration = () => {
     }, []);
 
 
-    console.log(order)
     return (
         <section className="declaration">
             <div className="container">
@@ -58,6 +57,7 @@ const Declaration = () => {
                         <button className="declaration__right-btn">Все объявление пользователя</button>
 
                         <p className="declaration__right-phone"><span><AiFillPhone/></span>{order.phone}</p>
+                        <p className="declaration__right-phone">Просмотрено: <span>1</span></p>
 
                     </div>
                 </div>

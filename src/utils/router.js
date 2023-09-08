@@ -9,6 +9,7 @@ import OneUser from "../pages/OneUser/OneUser";
 import Register from "../pages/Register/Register";
 import Room from "../pages/Room/Room";
 import Error from "../pages/Error/Error";
+import Favorites from "../pages/Favorites/Favorites";
 
 
 export default function Router () {
@@ -28,6 +29,10 @@ export default function Router () {
                 {
                     path: '/adddeclaration',
                     element: <AddDeclaration/>
+                },
+                {
+                    path: '/favorites',
+                    element: <Favorites/>
                 },
                 {
                     path: '/declaration/:id',

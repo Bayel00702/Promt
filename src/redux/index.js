@@ -11,6 +11,7 @@ import category from "./reducers/category";
 import subcategory from "./reducers/subcategory";
 import upload from "./reducers/resetUpload";
 
+
 const rememberedKeys = ['auth'];
 
 const store = configureStore({
@@ -25,7 +26,6 @@ const store = configureStore({
         category,
         subcategory,
         upload,
-
     }),
     enhancers: [rememberEnhancer(window.localStorage, rememberedKeys,{persistWholeStore: true})]
 });

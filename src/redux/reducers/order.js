@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const creatorId = JSON.parse(localStorage.getItem("@@remember-rootState")).auth ? JSON.parse(localStorage.getItem("@@remember-rootState")).auth.user._id : "";
+const creatorId = JSON.parse(localStorage.getItem("@@remember-rootState"))?.auth ? JSON.parse(localStorage.getItem("@@remember-rootState"))?.auth?.user?._id : "";
 
 
 export const orderSlice = createSlice({

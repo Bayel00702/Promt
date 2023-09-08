@@ -32,10 +32,10 @@ const Header = () => {
                         </label>
                         <ul className="header__list">
                             <li className="header__item"><Link to="/catalog" className="header__item">Marketplace</Link></li>
-                            <li className="header__item"><Link to="" className="header__item">Generate</Link></li>
+                            <li className="header__item"><Link to="/favorites" className="header__item">Favorites</Link></li>
                             <li className="header__item"><Link to="" className="header__item">Hire</Link></li>
                             {
-                                JSON.parse(localStorage.getItem('@@remember-rootState')).auth.user === null ?
+                                JSON.parse(localStorage.getItem('@@remember-rootState'))?.auth?.user === null ?
                                     <li className="header__item"><Link to="/login" className="header__item">Login</Link></li>
                                     : ''
                             }
@@ -51,7 +51,7 @@ const Header = () => {
                             <Link className="header__right-icons" to=''><BsInstagram/></Link>
                             <Link className="header__right-icons" to=''><AiOutlineTwitter/></Link>
                             {
-                                JSON.parse(localStorage.getItem('@@remember-rootState')).auth.user !== null ?
+                                JSON.parse(localStorage.getItem('@@remember-rootState'))?.auth?.user !== null ?
                                     <Link className="header__right-icons" to={'/room'}><AiOutlineUser/></Link>
                                     : ''
 
@@ -60,7 +60,7 @@ const Header = () => {
                         </span>
                     </div>
                     {
-                        JSON.parse(localStorage.getItem('@@remember-rootState')).auth.user !== null ?
+                        JSON.parse(localStorage.getItem('@@remember-rootState'))?.auth?.user !== null ?
                             <Link to='/adddeclaration' className="header__btn">Подать объявление</Link>
                             : ''
 

@@ -17,7 +17,7 @@ const userSlice = createSlice({
     name: "user",
     initialState: {
         user: {},
-        favorites:[],
+        favorites: [],
         status: '',
         error: ''
     },
@@ -26,19 +26,21 @@ const userSlice = createSlice({
             const existingIndex = state.favorites.some((item) => item._id === payload._id);
 
             if (existingIndex) {
-                // Удаляем элемент, если он уже существует в избранных
                 state.favorites = state.favorites.filter(item => item._id !== payload._id)
             } else {
-                // Добавляем элемент, если его нет в избранных
                state.favorites = [...state.favorites, payload]
             }
-
-            // Сохраняем избранные в localStorage
             localStorage.setItem("favorites", JSON.stringify(state.favorites));
         },
-        deleteInFavorites: (state, {payload}) => {
-            state.favorites = state.favorites.filter((item) => item.id !== payload);
-        },
+        updateFavorites: (state) => {
+            state.favorites = localStorage.getItem('favorites') && JSON.parse(localStorage.getItem(('favorites')))
+        }
+        // deleteInFavorites: (state, {payload}) => {
+        //     state.favorites = state.favorites.filter((item) => item.id !== payload);
+        // },
+        // setFav: (state, {payload}) => {
+        //     state.favorites = [...state.favorites, payload]
+        // }
 
     },
     extraReducers: (builder) => {
@@ -58,5 +60,5 @@ const userSlice = createSlice({
     }
 });
 
-export const {addInFavorites, deleteInFavorites} = userSlice.actions;
+export const {addInFavorites, updateFavorites} = userSlice.actions;
 export default userSlice.reducer
