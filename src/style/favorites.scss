@@ -4,6 +4,27 @@
   &__row{
     display: flex;
     flex-wrap: wrap;
-    column-gap: 24px;
+    gap: 31px 8px;
+  }
+
+  &__pag{
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    justify-content: center;
+    margin: 20px;
+
+    &-item{
+      padding: 10px 20px;
+      background: transparent;
+      border: 2px solid #FFFFFF;
+      border-radius: 10px;
+      color: #FFFFFF;
+      font-weight: 500;
+
+      &.active{
+        background: #FAE620;
+      }
+    }
   }
 }

@@ -11,7 +11,6 @@ const CatalogRow = () => {
     useEffect(() => {
        dispatch(getAllOrders())
     }, []);
-    console.log(data)
 
 
 

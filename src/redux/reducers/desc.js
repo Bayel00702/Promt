@@ -1,11 +1,11 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "../../utils/axios";
 
-export const  getAllCategory = createAsyncThunk(
-    "category/getCategory",
+export const getDescCategory = createAsyncThunk(
+    "desc/getDescCategory",
     async (_, thunkAPI) => {
         try {
-            const res = await axios('/category');
+            const res = await axios('/orders?price=desc');
             return res.data
         }catch (error) {
             return thunkAPI.rejectWithValue(error)
@@ -13,28 +13,30 @@ export const  getAllCategory = createAsyncThunk(
     }
 );
 
-const categorySlice = createSlice({
-   name: "category",
+const descSlice = createSlice({
+    name: "desc",
     initialState: {
-        category: [],
+        desc: [],
         isLoading: false,
         error: ''
     },
     extraReducers: (builder) => {
         builder
-            .addCase(getAllCategory.pending, state => {
+            .addCase(getDescCategory.pending, state => {
                 state.isLoading = true
             })
-            .addCase(getAllCategory.fulfilled, (state, {payload}) => {
+            .addCase(getDescCategory.fulfilled, (state, {payload}) => {
                 state.isLoading = false;
-                state.category = payload
+                state.desc = payload
             })
-            .addCase(getAllCategory.rejected, (state, {payload}) => {
+            .addCase(getDescCategory.rejected, (state, {payload}) => {
                 state.error = payload;
                 state.isLoading = false
             })
     },
-    
+
 });
 
-export default categorySlice.reducer
+export default descSlice.reducer;
+
+

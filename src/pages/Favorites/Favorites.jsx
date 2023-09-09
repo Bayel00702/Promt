@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import PromtsCard from "../../components/PromtsCard/PromtsCard";
 
@@ -6,6 +6,19 @@ const Favorites = () => {
 
     const dispatch = useDispatch();
     const {favorites} = useSelector(store => store.oneUser);
+    const [page, setPage] = useState(1);
+    const [active, setActive] = useState(false);
+    let favoritesPagesCount = new Array(Math.ceil(favorites.length / 4)).fill(null, 0 );
+
+
+
+    useEffect(() => {
+        if(page > favorites.length){
+            setPage(favorites.length)
+        }
+
+    }, [favorites]);
+
 
 
     return (
@@ -13,12 +26,25 @@ const Favorites = () => {
             <div className="container">
                 <div className="favorites__row">
                     {
-                        favorites.map((item) => (
+                        favorites.filter((item, idx) => idx >= page * 4 - 4 && idx < page * 4).map((item) => (
                             <PromtsCard item={item}/>
                         ))
                     }
 
                 </div>
+                    {
+                        favoritesPagesCount.length !== 1 && <ul className="favorites__pag">
+                            {
+                                favoritesPagesCount.filter((item) => item !== active).map((item, idx) => (
+                                    <li className={`favorites__pag-item ${active ? 'active' : ''}`}
+                                        onClick={() => {
+                                            setActive(prev => !prev);
+                                            setPage(idx + 1 );
+                                        }} key={idx} >{idx + 1}</li>
+                                ))
+                            }
+                        </ul>
+                    }
             </div>
         </section>
     );

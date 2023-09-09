@@ -10,6 +10,8 @@ import userOrders from "./reducers/userOrders";
 import category from "./reducers/category";
 import subcategory from "./reducers/subcategory";
 import upload from "./reducers/resetUpload";
+import asc from "./reducers/asc";
+import desc from "./reducers/desc";
 
 
 const rememberedKeys = ['auth'];
@@ -26,6 +28,8 @@ const store = configureStore({
         category,
         subcategory,
         upload,
+        asc,
+        desc,
     }),
     enhancers: [rememberEnhancer(window.localStorage, rememberedKeys,{persistWholeStore: true})]
 });

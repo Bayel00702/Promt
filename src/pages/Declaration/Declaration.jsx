@@ -1,22 +1,62 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams, Link} from 'react-router-dom'
 import DeclarationSwiper from "./DeclarationSwiper/DeclarationSwiper";
 import {AiFillPhone} from 'react-icons/ai'
 import {useDispatch, useSelector} from "react-redux";
 import {getOneOrder} from "../../redux/reducers/product";
+import axios from "../../utils/axios";
 
 const Declaration = () => {
 
-    const dispatch = useDispatch();
-    const {order} = useSelector(store => store.oneOrder);
-    const params = useParams();
+        const dispatch = useDispatch();
+        const {order} = useSelector(store => store.oneOrder);
+        const {user} = useSelector(store => store.auth);
+        // const [viewsCount, setViewsCount] = useState(order.views)
+        const params = useParams();
+    const isCreator = user._id === order?.creatorData?.id;
+
 
 
     useEffect(() => {
-        dispatch(getOneOrder(params.id))
+        if (user._id !== order?.creatorData?.id) {
+            dispatch(getOneOrder(params.id))
+        }
     }, []);
 
 
+
+    console.log(isCreator)
+
+
+
+
+    // if (user._id === order?.creatorData?.id) {
+    //     // If the user is the creator, simply fetch the order
+    //     axios
+    //         .get(`/order/${params.id}`)
+    //         .then((res) => {
+    //             if (res.status === 200) {
+    //                 setViewsCount(res.data.views);
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             console.error(error);
+    //         });
+    // } else {
+    //     // If the user is not the creator, fetch the order with views
+    //     axios
+    //         .get(`/order/${params.id}?views=${order.views}`)
+    //         .then((res) => {
+    //             if (res.status === 200) {
+    //                 setViewsCount(res.data.views);
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             console.error(error);
+    //         });
+    // }
+
+    // console.log(viewsCount)
     return (
         <section className="declaration">
             <div className="container">
@@ -57,7 +97,7 @@ const Declaration = () => {
                         <button className="declaration__right-btn">Все объявление пользователя</button>
 
                         <p className="declaration__right-phone"><span><AiFillPhone/></span>{order.phone}</p>
-                        <p className="declaration__right-phone">Просмотрено: <span>1</span></p>
+                        <p className="declaration__right-phone">Просмотрено: <span>{order.views}</span></p>
 
                     </div>
                 </div>

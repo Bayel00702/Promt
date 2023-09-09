@@ -1,24 +1,24 @@
 import React, {useEffect, useState} from 'react';
+import PromtsCard from "../../../../../components/PromtsCard/PromtsCard";
 import {useDispatch, useSelector} from "react-redux";
 import {getAscCategory} from "../../../../../redux/reducers/asc";
-import PromtsCard from "../../../../../components/PromtsCard/PromtsCard";
+import {getDescCategory} from "../../../../../redux/reducers/desc";
 
-const PopularInfo = () => {
+const PopularDesc = () => {
 
     const dispatch = useDispatch();
-    const {asc} = useSelector(store => store.asc);
+    const {desc} = useSelector(store => store.desc);
     const [page, setPage] = useState(1);
-    let favoritesPagesCount = new Array(Math.ceil(asc.length / 4)).fill(null, 0 );
+    let favoritesPagesCount = new Array(Math.ceil(desc.length / 4)).fill(null, 0 );
 
     useEffect(() => {
-        dispatch(getAscCategory());
-        if(page > asc.length){
-            setPage(asc.length)
+        dispatch(getDescCategory());
+        if(page > desc.length){
+            setPage(desc.length)
         }
     }, []);
 
-
-
+    console.log(desc)
     return (
         <>
             <div className="popular__top">
@@ -36,10 +36,10 @@ const PopularInfo = () => {
                     {
                         favoritesPagesCount.length !== 1 &&
                         <button
-                                onClick={() => {
-                                    setPage((prev) => prev + 1)
-                                }}
-                                className="popular__top-btn"><span><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            onClick={() => {
+                                setPage((prev) => prev + 1)
+                            }}
+                            className="popular__top-btn"><span><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M16.05 25.9499L22.95 19.05C23.1 18.9 23.206 18.7375 23.268 18.5625C23.33 18.3875 23.3615 18.2 23.3625 18C23.3625 17.8 23.331 17.6125 23.268 17.4375C23.205 17.2625 23.099 17.1 22.95 16.95L16.05 10.05C15.775 9.77495 15.425 9.63745 15 9.63745C14.575 9.63745 14.225 9.77495 13.95 10.05C13.675 10.325 13.5375 10.675 13.5375 11.1C13.5375 11.525 13.675 11.875 13.95 12.15L19.8 18L13.95 23.85C13.675 24.125 13.5375 24.475 13.5375 24.9C13.5375 25.325 13.675 25.6749 13.95 25.9499C14.225 26.2249 14.575 26.3625 15 26.3625C15.425 26.3625 15.775 26.2249 16.05 25.9499Z" fill="white"/>
 </svg>
                         </span></button>
@@ -48,7 +48,7 @@ const PopularInfo = () => {
             </div>
             <div className="popular__row">
                 {
-                    asc.filter((item, idx) => idx >= page * 4 - 4 && idx < page * 4).map((item) => (
+                    desc.filter((item, idx) => idx >= page * 4 - 4 && idx < page * 4).map((item) => (
                         <PromtsCard item={item}/>
                     ))
                 }
@@ -57,4 +57,4 @@ const PopularInfo = () => {
     );
 };
 
-export default PopularInfo;
+export default PopularDesc;
