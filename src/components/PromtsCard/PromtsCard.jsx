@@ -6,8 +6,9 @@ import {addInFavorites, updateFavorites} from "../../redux/reducers/user.js"
 
 const PromtsCard = ({item}) => {
     const dispatch = useDispatch();
-    const {favorites} = useSelector(state => state.oneUser)
-    useEffect(()=>{
+    const {favorites} = useSelector(state => state.oneUser);
+
+    useEffect(() => {
         dispatch(updateFavorites())
     },[dispatch], favorites?.length)
     return (

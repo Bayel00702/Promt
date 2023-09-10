@@ -36,11 +36,16 @@ const Favorites = () => {
                         favoritesPagesCount.length !== 1 && <ul className="favorites__pag">
                             {
                                 favoritesPagesCount.filter((item) => item !== active).map((item, idx) => (
-                                    <li className={`favorites__pag-item ${active ? 'active' : ''}`}
+                                    <li
+                                        className={`favorites__pag-item ${idx + 1 === page ? 'active-button' : ''}`}
                                         onClick={() => {
                                             setActive(prev => !prev);
-                                            setPage(idx + 1 );
-                                        }} key={idx} >{idx + 1}</li>
+                                            setPage(idx + 1);
+                                        }}
+                                        key={idx}
+                                    >
+                                        {idx + 1}
+                                    </li>
                                 ))
                             }
                         </ul>

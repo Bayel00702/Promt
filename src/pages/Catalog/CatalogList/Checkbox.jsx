@@ -8,6 +8,7 @@ export default function ControlledCheckbox() {
         setChecked(event.target.checked);
     };
 
+
     return (
         <Checkbox
             checked={checked}

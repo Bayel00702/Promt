@@ -6,12 +6,14 @@ import {getOneUser} from "../../redux/reducers/user";
 import {getAllUserOrders} from "../../redux/reducers/userOrders";
 
 const OneUser = () => {
-    const [tab, setTab] = useState("Not active");
+    const [tab, setTab] = useState("Announcement");
 
     const dispatch = useDispatch();
     const {user} = useSelector(store => store.oneUser);
     const {userOrders} = useSelector(store => store.userOrders);
     const {id} = useParams();
+    const [page, setPage] = useState(1);
+    let favoritesPagesCount = new Array(Math.ceil(userOrders.length / 8)).fill(null, 0 );
 
 
 
@@ -41,12 +43,26 @@ const OneUser = () => {
                 {
                     tab === 'Announcement' ? <div className="user__bottom">
                         {
-                            userOrders.map((item) => (
+                            userOrders.filter((item, idx) => idx >= page * 8 - 8 && idx < page * 8).map((item) => (
                                 <PromtsCard item={item}/>
                             ))
                         }
-                    </div> : ''
+                    </div> :
+                        tab === 'Not active' ? '' : ''
+                }
 
+                {
+                    favoritesPagesCount.length !== 1 && <ul className="favorites__pag">
+                        {
+                            favoritesPagesCount.map((item, idx) => (
+                                <li className={`favorites__pag-item `}
+                                    onClick={() => {
+                                        // setActive(prev => !prev);
+                                        setPage(idx + 1 );
+                                    }} key={idx} >{idx + 1}</li>
+                            ))
+                        }
+                    </ul>
                 }
 
             </div>

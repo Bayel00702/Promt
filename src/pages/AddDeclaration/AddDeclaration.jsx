@@ -98,7 +98,7 @@ const AddDeclaration = () => {
                             </div>
                             <label htmlFor="" className="add__label">
                                 <h3 className="add__subtitle">Description</h3>
-                                <input className='add__textarea' {...register('description', {
+                                <textarea className='add__textarea' {...register('description', {
                                     required: {
                                         message: 'Обязательно к заполнению',
                                         value: true

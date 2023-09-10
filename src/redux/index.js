@@ -12,6 +12,8 @@ import subcategory from "./reducers/subcategory";
 import upload from "./reducers/resetUpload";
 import asc from "./reducers/asc";
 import desc from "./reducers/desc";
+import {apiSlice} from './reducers/increaseViews'
+
 
 
 const rememberedKeys = ['auth'];
@@ -30,7 +32,10 @@ const store = configureStore({
         upload,
         asc,
         desc,
+        [apiSlice.reducerPath]: apiSlice.reducer
     }),
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(apiSlice.middleware),
     enhancers: [rememberEnhancer(window.localStorage, rememberedKeys,{persistWholeStore: true})]
 });
 

@@ -6,28 +6,28 @@ import {getAllOrders} from "../../../redux/reducers/orders";
 const CatalogRow = () => {
 
     const dispatch = useDispatch();
-    const {data} = useSelector(store => store.orders);
+    const {data, filter} = useSelector(store => store.orders);
 
     useEffect(() => {
-       dispatch(getAllOrders())
-    }, []);
-
+        if (filter)
+            dispatch(getAllOrders(filter))
+    }, [filter]);
 
 
     return (
-            <div className="catalog__right">
-                <h2 className="catalog__title">
-                    Trending Prompts
-                </h2>
-                <div className="catalog__row2">
-                    {
-                        data.map((item, idx) => (
-                            <PromtsCard item={item} key={item._id || idx}/>
-                        ))
-                    }
+        <div className="catalog__right">
+            <h2 className="catalog__title">
+                Trending Prompts
+            </h2>
+            <div className="catalog__row2">
+                {
+                    data.map((item, idx) => (
+                        <PromtsCard item={item} key={item._id || idx}/>
+                    ))
+                }
 
-                </div>
             </div>
+        </div>
     );
 };
 

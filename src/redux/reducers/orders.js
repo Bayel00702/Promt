@@ -3,9 +3,10 @@ import axios from "../../utils/axios";
 
 export const getAllOrders = createAsyncThunk(
     "orders/getAllOrders",
-    async (_,thunkAPI) => {
+    async (filter,thunkAPI) => {
         try {
-            const res = await axios('/orders');
+            const filterQuery = filter.reduce((acc, rec, idx ) => (acc+=`${idx === 0 ? "?" : "&"}category=${rec}`) , "");
+            const res = await axios(`/orders${filter.length > 0 ? filterQuery : ''}`);
             return res.data
         }catch (error) {
             return thunkAPI.rejectWithValue(error)
@@ -18,10 +19,15 @@ const ordersSlice = createSlice({
     name: "orders",
     initialState: {
         data: [],
+        filter: [],
         isLoading: false,
         error: ''
     },
-    reducers: {},
+    reducers: {
+        changeCategory: (state,{payload}) => {
+            state.filter = payload
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getAllOrders.pending, state => {
@@ -37,5 +43,7 @@ const ordersSlice = createSlice({
             })
     }
 });
+
+export const {changeCategory} = ordersSlice.actions
 
 export default ordersSlice.reducer

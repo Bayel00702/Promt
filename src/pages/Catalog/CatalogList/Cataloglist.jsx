@@ -1,7 +1,44 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Checkbox} from "@mui/material";
+import {useDispatch, useSelector} from "react-redux";
+import {getAllCategory} from "../../../redux/reducers/category";
+import {changeCategory} from "../../../redux/reducers/orders";
 
 const CatalogList = () => {
+
+
+    const dispatch = useDispatch();
+    const { category } = useSelector(store => store.category);
+    const {filter} = useSelector(store => store.orders)
+
+    const [categories, setCategories] = useState(filter || []);
+
+    // Use an object for selectedCategories with category IDs as keys
+    const [selectedCategories, setSelectedCategories] = useState({});
+
+    // Toggle the category's selection status
+    const handleCategoryChange = (categoryName) => {
+        let categoryData = [];
+        const existingCategory = categories.some(category => category === categoryName)
+        if(existingCategory){
+            categoryData = categories.filter(el => el !== categoryName)
+        }else{
+            categoryData = [...categories, categoryName]
+        }
+        setCategories(categoryData);
+    };
+
+    useEffect(() => {dispatch(getAllCategory());}, []);
+
+    useEffect(() => {
+        if(categories) dispatch(changeCategory(categories))
+    }, [categories]);
+
+
+
+    console.log(categories)
+
+
     return (
         <div className="catalog__left">
             <ul className="catalog__left-list">
@@ -44,44 +81,21 @@ const CatalogList = () => {
 </svg>
 
 </span>Prompts</li>
-                <li className="catalog__left-item"><Checkbox/>DALL·E</li>
-                <li className="catalog__left-item"><Checkbox/>Midjourney</li>
-                <li className="catalog__left-item"><Checkbox/>GPT-3</li>
-                <li className="catalog__left-item"><Checkbox/>ChatGPT</li>
-                <li className="catalog__left-item"><Checkbox/>Prompts</li>
-                <li className="catalog__left-item"><Checkbox/>Stable Diffusion</li>
+                {category.map((item) => (
+                    <li
+                        className="catalog__left-item"
+                        key={item.id}
+                        // onClick={() => handleCategoryChange(item.name)}
+                    >
+                        <Checkbox
+                            checked={selectedCategories[item._id]}
+                            onChange={() => handleCategoryChange(item.name)}
+                        />
+                        {item.name}
+                    </li>
+                ))}
             </ul>
-            <ul className="catalog__left-list">
-                <li className="catalog__left-gen"><span><svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="24.0573" height="24.0573" rx="3.00716" fill="#0B88D9"/>
-<rect width="24.0573" height="24.0573" rx="3.00716" fill="url(#paint0_linear_53_211)"/>
-<rect width="24.0573" height="24.0573" rx="3.00716" fill="url(#paint1_linear_53_211)"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M6.16048 6.22173C5.90235 6.3404 5.54841 6.624 5.37394 6.852C5.08535 7.2292 5.05675 7.42333 5.05675 9C5.05675 10.5795 5.08506 10.7704 5.37565 11.1503C5.89005 11.8225 6.47023 12 8.15301 11.9997C9.85623 11.9996 10.4291 11.8115 10.953 11.0803C11.2458 10.6715 11.2776 10.4697 11.277 9.0136C11.2766 7.63867 11.2345 7.33573 10.9923 6.96547C10.4733 6.17173 9.97721 6.00067 8.20292 6.0036C7.04698 6.00533 6.50541 6.06333 6.16048 6.22173ZM13.6941 6.30267C12.8648 6.8192 12.7081 7.2936 12.7079 9.28907C12.7078 10.2548 12.7467 11.1397 12.7945 11.2557C12.8967 11.5043 13.435 11.5352 13.6801 11.3067C13.7964 11.1983 13.8517 10.576 13.8517 9.37853C13.8517 7.0884 13.8706 7.06667 15.8558 7.06667C17.1116 7.06667 17.2617 7.09413 17.545 7.3752C17.8215 7.6496 17.8559 7.83173 17.8559 9.0164C17.8559 10.6819 17.7575 10.8359 16.6329 10.9307C15.7165 11.008 15.3716 11.2793 15.6549 11.7C15.77 11.8708 16.0395 11.9437 16.6608 11.9723C17.3543 12.0041 17.6004 11.9548 18.0045 11.7029C18.8564 11.1723 19.0177 10.6988 18.9701 8.86667C18.9335 7.46147 18.8897 7.21587 18.6096 6.84973C18.0882 6.16827 17.5213 6 15.7461 6C14.356 6 14.1254 6.034 13.6941 6.30267ZM9.82048 7.33853C10.1039 7.58467 10.1335 7.742 10.1335 9.0052C10.1335 10.8824 10.0806 10.9333 8.13141 10.9333C6.18136 10.9333 6.1293 10.8831 6.1293 9C6.1293 7.12133 6.18522 7.06667 8.10438 7.06667C9.31881 7.06667 9.54962 7.1032 9.82048 7.33853ZM6.16048 13.2853C5.2561 13.7068 5.06247 14.1449 5.00927 15.8901C4.95535 17.6589 5.1221 18.1875 5.89663 18.7027C6.30191 18.9721 6.51128 19 8.13141 19C9.75155 19 9.96091 18.9721 10.3662 18.7027C11.1374 18.1897 11.2776 17.7187 11.2776 15.6399C11.2776 13.7304 11.2054 13.4667 10.682 13.4667C10.2478 13.4667 10.1335 13.9277 10.1314 15.6912C10.1301 16.6311 10.0819 17.466 10.0241 17.5467C9.79245 17.87 9.23758 18 8.08865 18C7.08531 18 6.8196 17.9536 6.50613 17.7236C6.14275 17.4572 6.1293 17.3983 6.1293 16.0803C6.1293 14.4091 6.2972 14.1751 7.54465 14.1081C8.41271 14.0615 8.7565 13.7871 8.47334 13.3667C8.2524 13.0387 6.79944 12.9876 6.16048 13.2853ZM13.8619 13.2944C12.9312 13.7479 12.7842 14.0899 12.7375 15.9092C12.6914 17.714 12.8414 18.1968 13.6119 18.7239C13.9701 18.9688 14.2203 19 15.8285 19C17.4748 19 17.6825 18.9727 18.0886 18.7027C18.8154 18.2192 19 17.6855 19 16.0667C19 14.4479 18.8154 13.9141 18.0886 13.4307C17.6991 13.1716 17.4295 13.1283 15.9968 13.0944C14.6378 13.0623 14.2672 13.0971 13.8619 13.2944ZM17.525 14.4232C17.8282 14.6888 17.8559 14.8251 17.8559 16.048C17.8559 17.2349 17.8215 17.4169 17.545 17.6915C17.2617 17.9725 17.1116 18 15.8558 18C13.9301 18 13.8517 17.9244 13.8517 16.0667C13.8517 14.2124 13.933 14.1333 15.8358 14.1333C17.0335 14.1333 17.2331 14.1676 17.525 14.4232Z" fill="white"/>
-<defs>
-<linearGradient id="paint0_linear_53_211" x1="-11" y1="-7.5" x2="32.5" y2="36.5" gradientUnits="userSpaceOnUse">
-<stop offset="0.291667" stop-color="#F95A63"/>
-<stop offset="0.473958" stop-color="#0B88D9"/>
-<stop offset="0.6875" stop-color="#FAE620"/>
-<stop offset="0.755208" stop-color="#4CDE55"/>
-</linearGradient>
-<linearGradient id="paint1_linear_53_211" x1="-13" y1="-10" x2="33" y2="37.5" gradientUnits="userSpaceOnUse">
-<stop offset="0.232794" stop-color="#F95A63"/>
-<stop offset="0.473958" stop-color="#0B88D9"/>
-<stop offset="0.6875" stop-color="#FAE620"/>
-<stop offset="0.755208" stop-color="#4CDE55"/>
-</linearGradient>
-</defs>
-</svg>
 
-</span>Categories</li>
-                <li className="catalog__left-item"><Checkbox/>3D</li>
-                <li className="catalog__left-item"><Checkbox/>Accessory</li>
-                <li className="catalog__left-item"><Checkbox/>Animal</li>
-                <li className="catalog__left-item"><Checkbox/>Anime</li>
-                <li className="catalog__left-item"><Checkbox/>Avatar</li>
-                <li className="catalog__left-item"><Checkbox/>Building</li>
-                <li className="catalog__left-item"><Checkbox/>Cartoon</li>
-            </ul>
         </div>
     );
 };
