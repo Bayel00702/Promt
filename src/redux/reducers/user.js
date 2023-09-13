@@ -33,7 +33,7 @@ const userSlice = createSlice({
             localStorage.setItem("favorites", JSON.stringify(state.favorites));
         },
         updateFavorites: (state) => {
-            state.favorites = localStorage.getItem('favorites') && JSON.parse(localStorage.getItem(('favorites')))
+            state.favorites = JSON.parse(localStorage.getItem('favorites')) || [] && JSON.parse(localStorage.getItem('favorites')) || []
         }
         // deleteInFavorites: (state, {payload}) => {
         //     state.favorites = state.favorites.filter((item) => item.id !== payload);

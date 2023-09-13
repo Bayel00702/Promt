@@ -1,12 +1,29 @@
-import React from 'react';
-import Logo from '../../../assets/Logo.png'
+import React, {useEffect, useState} from 'react';
+import Logo from '../../../assets/Logo.png';
 import {AiOutlineSearch,AiOutlineTwitter,AiOutlineUser} from 'react-icons/ai';
 import {BsFacebook,BsInstagram} from 'react-icons/bs';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate, useLocation} from 'react-router-dom';
 
 
 
 const Header = () => {
+
+    const navigate = useNavigate();
+    const [search, setSearch] = useState('');
+    const location = useLocation();
+    const handleSearchInputChange = (e) => {
+        setSearch(e.target.value);
+    };
+
+
+
+
+    useEffect(() => {
+        if (location.pathname !== 'catalog'){
+            setSearch('')
+        }
+
+    }, [location.pathname]);
 
     return (
         <header className="header">
@@ -27,7 +44,18 @@ const Header = () => {
                     </Link>
                     <div className="header__center">
                         <label htmlFor="" className="header__center-label">
-                            <input placeholder="Search Prompts..." type="search" className="header__center-input"/>
+                            <input
+                                onChange={(e) => {
+                                    if (location.pathname !== '/catalog'){
+                                        navigate('/catalog')
+                                    }
+                                    handleSearchInputChange()
+                                }}
+                                placeholder="Search Prompts..."
+                                type="search"
+                                value={search}
+                                className="header__center-input"
+                            />
                             <span className="header__center-label__icon"><AiOutlineSearch/></span>
                         </label>
                         <ul className="header__list">

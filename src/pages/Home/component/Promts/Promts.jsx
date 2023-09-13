@@ -5,10 +5,12 @@ import {getAllOrders} from "../../../../redux/reducers/orders";
 
 const Promts = () => {
     const dispatch = useDispatch();
-    const {data} = useSelector(store => store.orders);
+    const {data, filter} = useSelector(store => store.orders);
 
     useEffect(() => {
-        dispatch(getAllOrders())
+
+            dispatch(getAllOrders())
+
     }, []);
 
     return (
@@ -22,9 +24,11 @@ const Promts = () => {
 
                 <div className="promts__row">
                     {
+                        data.length ?
                         data.map((item, idx) => (
                             <PromtsCard item={item} key={item._id || idx}/>
                         ))
+                            : <p>error</p>
                     }
                 </div>
 

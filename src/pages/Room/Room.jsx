@@ -26,7 +26,7 @@ const Room = () => {
     const [tab2, setTab2] = useState("Omurzakov Sanjarbek");
     const [selectedImage, setSelectedImage] = useState(null);
 
-    const token = localStorage.getItem("@@remember-rootState") ? JSON.parse(localStorage.getItem("@@remember-rootState")).auth.token : "";
+    const token = localStorage.getItem("@@remember-rootState") ? JSON.parse(localStorage.getItem("@@remember-rootState"))?.auth?.token : "";
 
 
     const onSubmit = (data) => {
@@ -56,7 +56,7 @@ const Room = () => {
                 'Content-Type': 'multipart/form-data',
             },
         }).then(({data}) => {
-            console.log(data)
+            console.log(data);
             dispatch(setUser(data.user))
         })
     };
@@ -68,7 +68,6 @@ const Room = () => {
         formState: {
             errors
         },
-        watch
 
     } = useForm({
         mode: "onBlur"
@@ -76,7 +75,7 @@ const Room = () => {
 
 
     useEffect(() => {
-        dispatch(getOneUser(user._id))
+        dispatch(getOneUser(user._id));
         dispatch(getAllUserOrders(user._id));
     }, []);
 

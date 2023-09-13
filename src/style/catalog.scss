@@ -73,6 +73,12 @@
       font-size: 16.538px;
       font-weight: 500;
       background: transparent;
+      &.active{
+        border-radius: 35.558px;
+        border: 1px solid var(--white, #FFF);
+        background: var(--yellow, #FAE620);
+        color: var(--black, #000);
+      }
 
       &:hover{
         border-radius: 35.558px;

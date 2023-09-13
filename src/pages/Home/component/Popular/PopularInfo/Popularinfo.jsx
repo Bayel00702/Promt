@@ -2,13 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getAscCategory} from "../../../../../redux/reducers/asc";
 import PromtsCard from "../../../../../components/PromtsCard/PromtsCard";
+import {getAllOrders} from "../../../../../redux/reducers/orders";
 
 const PopularInfo = () => {
 
     const dispatch = useDispatch();
     const {asc} = useSelector(store => store.asc);
+
     const [page, setPage] = useState(1);
-    let favoritesPagesCount = new Array(Math.ceil(asc.length / 4)).fill(null, 0 );
+
+
+
 
     useEffect(() => {
         dispatch(getAscCategory());
@@ -17,7 +21,7 @@ const PopularInfo = () => {
         }
     }, []);
 
-    console.log(asc)
+    console.log(asc);
 
 
     return (
@@ -27,7 +31,8 @@ const PopularInfo = () => {
             </div>
             <div className="popular__row">
                 {
-                    asc.slice((page - 1) * 4, page * 4).map((item) => (
+
+                    asc.filter((item,idx) => idx < 4).map((item) => (
                         <PromtsCard item={item}/>
                     ))
                 }

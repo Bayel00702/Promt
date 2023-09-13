@@ -2,8 +2,6 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "../../utils/axios";
 
 
-const id  = JSON.parse(localStorage.getItem("@@remember-rootState"))?.auth ? JSON.parse(localStorage.getItem("@@remember-rootState"))?.auth?.user?._id : ''
-console.log(id)
 export const getOneOrder = createAsyncThunk(
     "oneOrder/getOneOrder",
     async (orderID, thunkAPI,req) => {

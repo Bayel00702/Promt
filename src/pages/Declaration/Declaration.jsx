@@ -4,7 +4,6 @@ import DeclarationSwiper from "./DeclarationSwiper/DeclarationSwiper";
 import {AiFillPhone} from 'react-icons/ai'
 import {useDispatch, useSelector} from "react-redux";
 import {getOneOrder} from "../../redux/reducers/product";
-import axios from "../../utils/axios";
 import {useIncreaseViewsMutation} from "../../redux/reducers/increaseViews"
 
 const Declaration = () => {
@@ -14,19 +13,13 @@ const Declaration = () => {
 
     const dispatch = useDispatch();
         const {order} = useSelector(store => store.oneOrder);
-        const {user} = useSelector(store => store.auth);
-        // const [viewsCount, setViewsCount] = useState(order.views)
         const params = useParams();
-    const isCreator = user._id === order?.creatorData?.id;
-    console.log(user._id)
-    console.log(id)
+
 
 
     useEffect(() => {
-        dispatch(getOneOrder(params.id))
-        // dispatch(increaseViews(params.id))
-        increaseViews({orderId: params.id, userId: id})
-
+        dispatch(getOneOrder(params.id));
+        increaseViews({orderId: params.id, userId: id});
     }, []);
 
 

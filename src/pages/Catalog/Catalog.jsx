@@ -1,7 +1,6 @@
 import React from 'react';
 import CatalogList from "./CatalogList/Cataloglist";
 import CatalogRow from "./CatalogRow/CatalogRow";
-import CatalogPaginations from "./CatalogPaginations/CatalogPaginations";
 
 const Catalog = () => {
     return (
@@ -11,7 +10,6 @@ const Catalog = () => {
                     <CatalogList/>
                     <CatalogRow/>
                 </div>
-                <CatalogPaginations/>
 
             </div>
         </section>

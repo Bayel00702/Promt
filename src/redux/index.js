@@ -16,7 +16,7 @@ import {apiSlice} from './reducers/increaseViews'
 
 
 
-const rememberedKeys = ['auth'];
+const rememberedKeys = ['auth', 'oneOrder'];
 
 const store = configureStore({
     reducer: rememberReducer({

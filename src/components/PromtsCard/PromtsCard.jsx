@@ -10,7 +10,7 @@ const PromtsCard = ({item}) => {
 
     useEffect(() => {
         dispatch(updateFavorites())
-    },[dispatch], favorites?.length)
+    },[dispatch, favorites?.length]);
     return (
         <>
             <div  className="promts__card">
@@ -33,7 +33,7 @@ const PromtsCard = ({item}) => {
                             dispatch(addInFavorites(item));
                         }}>
                             {
-                                favorites?.some(i => i._id === item._id) ? <MdFavorite/> : <MdFavoriteBorder/>
+                                favorites?.some(e => e._id === item._id) ? <MdFavorite/> : <MdFavoriteBorder/>
                             }
                         </span>
                     </div>

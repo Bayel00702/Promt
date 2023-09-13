@@ -26,7 +26,7 @@ const PopularDesc = () => {
             </div>
             <div className="popular__row">
                 {
-                    desc.slice((page - 1) * 4, page * 4).map((item) => (
+                    desc.filter((item,idx) => idx < 4).map((item) => (
                         <PromtsCard item={item} key={item.id}/>
                     ))
                 }

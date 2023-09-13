@@ -6,6 +6,7 @@ export const getAllOrders = createAsyncThunk(
     async (filter,thunkAPI) => {
         try {
             const filterQuery = filter.reduce((acc, rec, idx ) => (acc+=`${idx === 0 ? "?" : "&"}category=${rec}`) , "");
+            console.log(filterQuery);
             const res = await axios(`/orders${filter.length > 0 ? filterQuery : ''}`);
             return res.data
         }catch (error) {
@@ -44,6 +45,6 @@ const ordersSlice = createSlice({
     }
 });
 
-export const {changeCategory} = ordersSlice.actions
+export const {changeCategory} = ordersSlice.actions;
 
 export default ordersSlice.reducer
