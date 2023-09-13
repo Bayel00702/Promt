@@ -4,12 +4,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {getAllCategory} from "../../../redux/reducers/category";
 import {changeCategory} from "../../../redux/reducers/orders";
 
-const CatalogList = () => {
+export const CatalogList = () => {
 
 
     const dispatch = useDispatch();
     const { category } = useSelector(store => store.category);
-    const {filter} = useSelector(store => store.orders)
+    const {filter} = useSelector(store => store.orders);
 
     const [categories, setCategories] = useState(filter || []);
 
@@ -19,7 +19,7 @@ const CatalogList = () => {
     // Toggle the category's selection status
     const handleCategoryChange = (categoryName) => {
         let categoryData = [];
-        const existingCategory = categories.some(category => category === categoryName)
+        const existingCategory = categories.some(category => category === categoryName);
         if(existingCategory){
             categoryData = categories.filter(el => el !== categoryName)
         }else{
@@ -33,10 +33,6 @@ const CatalogList = () => {
     useEffect(() => {
         if(categories) dispatch(changeCategory(categories))
     }, [categories]);
-
-
-
-    console.log(categories)
 
 
     return (

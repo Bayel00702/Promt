@@ -3,20 +3,31 @@ import Logo from '../../../assets/Logo.png';
 import {AiOutlineSearch,AiOutlineTwitter,AiOutlineUser} from 'react-icons/ai';
 import {BsFacebook,BsInstagram} from 'react-icons/bs';
 import {Link, useNavigate, useLocation} from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { setSearchQuery } from '../../../redux/reducers/orders';
 
 
 const Header = () => {
+    const dispatch = useDispatch();
+    const searchQuery = useSelector((state) => state.orders.search);
 
     const navigate = useNavigate();
     const [search, setSearch] = useState('');
     const location = useLocation();
+
+    useEffect(() => {
+        if (location.pathname !== '/catalog') {
+            setSearch('');
+        }
+    }, [location.pathname]);
+
     const handleSearchInputChange = (e) => {
-        setSearch(e.target.value);
+        if (location.pathname !== '/catalog') {
+            navigate('/catalog');
+        }
+        const newValue = e.target.value;
+        dispatch(setSearchQuery(newValue));
     };
-
-
-
 
     useEffect(() => {
         if (location.pathname !== 'catalog'){
@@ -45,15 +56,10 @@ const Header = () => {
                     <div className="header__center">
                         <label htmlFor="" className="header__center-label">
                             <input
-                                onChange={(e) => {
-                                    if (location.pathname !== '/catalog'){
-                                        navigate('/catalog')
-                                    }
-                                    handleSearchInputChange()
-                                }}
+                                onChange={handleSearchInputChange}
                                 placeholder="Search Prompts..."
                                 type="search"
-                                value={search}
+                                value={searchQuery}
                                 className="header__center-input"
                             />
                             <span className="header__center-label__icon"><AiOutlineSearch/></span>
