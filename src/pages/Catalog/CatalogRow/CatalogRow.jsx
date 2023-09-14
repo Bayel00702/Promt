@@ -5,16 +5,16 @@ import { getAllOrders } from "../../../redux/reducers/orders";
 
 const CatalogRow = () => {
     const dispatch = useDispatch();
-    const { data, filter } = useSelector(store => store.orders);
+    const { data, filter,search,price } = useSelector(store => store.orders);
     const [page, setPage] = useState(1);
     const [active, setActive] = useState(false);
     let catalogPagesCount = new Array(Math.ceil(data.length / 6)).fill(null, 0);
 
     useEffect(() => {
         if (filter) {
-            dispatch(getAllOrders(filter));
+            dispatch(getAllOrders({filter,search,price}));
         }
-    }, [filter]);
+    }, [filter,search]);
 
     // Обработка изменения данных и установка начальной страницы
     useEffect(() => {

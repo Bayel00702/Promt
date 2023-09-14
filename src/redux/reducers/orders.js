@@ -3,15 +3,15 @@ import axios from "../../utils/axios";
 
 export const getAllOrders = createAsyncThunk(
     "orders/getAllOrders",
-    async (filter,thunkAPI) => {
+    async ({filter,search,price},thunkAPI) => {
         try {
-            const filterQuery = filter.reduce((acc, rec, idx ) => (acc+=`${idx === 0 ? "?" : "&"}category=${rec}`) , "");
-            // const searchQuery = search ? `&title=${search}` : '';
-            console.log(filterQuery);
-            const res = await axios(`/orders${filter.length > 0 ? filterQuery : ''}`);
-            // const res = await axios(`/orders${filter.length > 0 ? filterQuery : ''}&{searchQuery}`);
+            console.log(price);
+            const filterQuery = filter.reduce((acc, rec, idx ) => (acc+=`${idx === 0 ? "" : "&"}category=${rec}`) , "");
+            const res = await axios(`/orders?${search.length ? `title=${search}` + "&": ""}${filter.length ? filterQuery + "&" : ""}${price.length ? `price=${price}` : ""}`);
+
             return res.data
-        }catch (error) {
+        }
+        catch (error) {
             return thunkAPI.rejectWithValue(error)
         }
     }
@@ -25,7 +25,8 @@ const ordersSlice = createSlice({
         filter: [],
         isLoading: false,
         error: '',
-        // search: '',
+        search: '',
+        price: '',
     },
     reducers: {
         changeCategory: (state,{payload}) => {
@@ -33,6 +34,9 @@ const ordersSlice = createSlice({
         },
         setSearchQuery: (state, { payload }) => {
             state.search = payload; // Обновите значение поиска в состоянии
+        },
+        changePrice: (state,{payload}) => {
+            state.price = payload
         },
     },
     extraReducers: (builder) => {
@@ -51,6 +55,6 @@ const ordersSlice = createSlice({
     }
 });
 
-export const {changeCategory,setSearchQuery} = ordersSlice.actions;
+export const {changeCategory,setSearchQuery,changePrice} = ordersSlice.actions;
 
 export default ordersSlice.reducer

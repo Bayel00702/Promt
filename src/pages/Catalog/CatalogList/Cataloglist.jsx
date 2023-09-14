@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Checkbox} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllCategory} from "../../../redux/reducers/category";
-import {changeCategory} from "../../../redux/reducers/orders";
+import {changeCategory, changePrice,} from "../../../redux/reducers/orders";
 
 export const CatalogList = () => {
 
@@ -28,7 +28,15 @@ export const CatalogList = () => {
         setCategories(categoryData);
     };
 
-    useEffect(() => {dispatch(getAllCategory());}, []);
+    const handlePriceChange = (priceName) => {
+            dispatch(changePrice(priceName));
+        };
+
+
+
+    useEffect(() => {
+        dispatch(getAllCategory());
+     }, []);
 
     useEffect(() => {
         if(categories) dispatch(changeCategory(categories))
@@ -38,7 +46,9 @@ export const CatalogList = () => {
     return (
         <div className="catalog__left">
             <ul className="catalog__left-list">
-                <li className="catalog__left-gen"><span><svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <li className="catalog__left-gen">
+                    <span>
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="24.0573" height="24.0573" rx="3.00716" fill="url(#paint0_linear_53_96)"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.6551 5.06122C15.4847 5.11602 15.2544 5.2792 15.1435 5.42383C14.9463 5.68077 14.9404 5.79847 14.8933 10.4837L14.8451 15.2804L14.4112 14.8495C13.602 14.0459 12.986 13.9284 12.4248 14.4708C12.1427 14.7435 12.097 14.8503 12.097 15.2368V15.6859L13.8115 17.3429L15.5261 19H16.0415H16.557L18.1443 17.4856C19.0175 16.6527 19.793 15.858 19.8678 15.7196C20.2704 14.9751 19.7078 14.154 18.795 14.154C18.4967 14.154 18.3521 14.2396 17.8259 14.7279L17.2075 15.3018L17.2065 10.7905C17.2059 8.30927 17.178 6.11924 17.1447 5.92372C17.0272 5.23717 16.342 4.84045 15.6551 5.06122ZM4.27903 7.53009C3.9776 7.82141 3.91936 8.15383 4.10932 8.49864C4.3501 8.93553 4.27421 8.9291 9.18008 8.93218L13.8326 8.93516V8.09642V7.25768H9.19676H4.56088L4.27903 7.53009ZM4.27903 10.9782C3.9776 11.2695 3.91936 11.602 4.10932 11.9468C4.3501 12.3837 4.27421 12.3772 9.18008 12.3803L13.8326 12.3833V11.5446V10.7058H9.19676H4.56088L4.27903 10.9782ZM4.27903 14.4264C3.91975 14.7737 3.90866 15.1563 4.24682 15.5447L4.49647 15.8314H7.79048H11.0845V15.2024C11.0845 14.8564 11.12 14.4789 11.1633 14.3636L11.2421 14.154H7.90147H4.56088L4.27903 14.4264Z" fill="white"/>
 <defs>
@@ -51,11 +61,20 @@ export const CatalogList = () => {
 </defs>
 </svg>
 </span>Sort By</li>
-                <li className="catalog__left-item"><Checkbox/>Trending</li>
-                <li className="catalog__left-item"><Checkbox/>Most Popular</li>
+                <li className="catalog__left-item">
+                    <Checkbox onChange={() => handlePriceChange("asc")} />от меньшего
+                </li>
+                <li className="catalog__left-item">
+                    <Checkbox onChange={() => handlePriceChange("desc")} />от большего
+                </li>
+                <li className="catalog__left-item">
+                    <Checkbox onChange={() => handlePriceChange("")}/>по умолчанию
+                </li>
             </ul>
             <ul className="catalog__left-list">
-                <li className="catalog__left-gen"><span><svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <li className="catalog__left-gen">
+                    <span>
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="24.0573" height="24.0573" rx="3.00716" fill="#0B88D9"/>
 <rect width="24.0573" height="24.0573" rx="3.00716" fill="url(#paint0_linear_53_175)"/>
 <rect width="24.0573" height="24.0573" rx="3.00716" fill="url(#paint1_linear_53_175)"/>
