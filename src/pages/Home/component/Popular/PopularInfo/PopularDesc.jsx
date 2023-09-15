@@ -22,7 +22,7 @@ const PopularDesc = () => {
     return (
         <>
             <div className="popular__top">
-                <h2 className="popular__top-title">The cheapest goods</h2>
+                <h2 className="popular__top-title">The cheapest declaration</h2>
             </div>
             <div className="popular__row">
                 {

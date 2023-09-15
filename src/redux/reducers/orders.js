@@ -7,7 +7,7 @@ export const getAllOrders = createAsyncThunk(
         try {
             console.log(price);
             const filterQuery = filter.reduce((acc, rec, idx ) => (acc+=`${idx === 0 ? "" : "&"}category=${rec}`) , "");
-            const res = await axios(`/orders?${search.length ? `title=${search}` + "&": ""}${filter.length ? filterQuery + "&" : ""}${price.length ? `price=${price}` : ""}`);
+            const res = await axios(`/orders?${search.length ? `title=${search}` + "&": ""}${filter.length ? filterQuery + "&" : ""}${price.length ? `${price}` : ""}`);
 
             return res.data
         }

@@ -12,6 +12,8 @@ import subcategory from "./reducers/subcategory";
 import upload from "./reducers/resetUpload";
 import asc from "./reducers/asc";
 import desc from "./reducers/desc";
+import orderDesc from "./reducers/descOrders";
+import newOrders from "./reducers/newOrder";
 import {apiSlice} from './reducers/increaseViews'
 
 
@@ -32,6 +34,8 @@ const store = configureStore({
         upload,
         asc,
         desc,
+        orderDesc,
+        newOrders,
         [apiSlice.reducerPath]: apiSlice.reducer
     }),
     middleware: (getDefaultMiddleware) =>

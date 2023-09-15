@@ -6,9 +6,7 @@ import What from "./component/What/What";
 import Popular from "./component/Popular/Popular";
 import Earn from "./component/Earn/Earn";
 import Newest from "./component/Newest/Newest";
-import Directly from "./component/Directly/Directly";
-import {getAllOrders} from "../../redux/reducers/orders";
-import {useSelector, useDispatch} from "react-redux";
+
 
 const Home = () => {
 
@@ -21,7 +19,6 @@ const Home = () => {
             <Popular/>
             <Earn/>
             <Newest/>
-            <Directly/>
         </>
     );
 };

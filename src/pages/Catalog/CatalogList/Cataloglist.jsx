@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {Checkbox} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllCategory} from "../../../redux/reducers/category";
-import {changeCategory, changePrice,} from "../../../redux/reducers/orders";
+import {changeCategory,} from "../../../redux/reducers/orders";
+import CatalogSelect from "./CatalogSelect";
 
 export const CatalogList = () => {
 
@@ -10,6 +11,7 @@ export const CatalogList = () => {
     const dispatch = useDispatch();
     const { category } = useSelector(store => store.category);
     const {filter} = useSelector(store => store.orders);
+    // const {price} = useSelector(store => store.orders);
 
     const [categories, setCategories] = useState(filter || []);
 
@@ -28,10 +30,12 @@ export const CatalogList = () => {
         setCategories(categoryData);
     };
 
-    const handlePriceChange = (priceName) => {
-            dispatch(changePrice(priceName));
-        };
-
+    // const [resetPrice,setResetPrice] = useState(price || '');
+    //
+    //
+    // useEffect(() => {
+    //     if(resetPrice) dispatch(changePrice(resetPrice))
+    // }, '');
 
 
     useEffect(() => {
@@ -45,8 +49,7 @@ export const CatalogList = () => {
 
     return (
         <div className="catalog__left">
-            <ul className="catalog__left-list">
-                <li className="catalog__left-gen">
+            <p className="catalog__left-gen">
                     <span>
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="24.0573" height="24.0573" rx="3.00716" fill="url(#paint0_linear_53_96)"/>
@@ -60,17 +63,12 @@ export const CatalogList = () => {
 </linearGradient>
 </defs>
 </svg>
-</span>Sort By</li>
-                <li className="catalog__left-item">
-                    <Checkbox onChange={() => handlePriceChange("asc")} />от меньшего
-                </li>
-                <li className="catalog__left-item">
-                    <Checkbox onChange={() => handlePriceChange("desc")} />от большего
-                </li>
-                <li className="catalog__left-item">
-                    <Checkbox onChange={() => handlePriceChange("")}/>по умолчанию
-                </li>
-            </ul>
+</span>Sort By</p>
+
+            <div className="catalog__left-selects">
+                <CatalogSelect/>
+            </div>
+
             <ul className="catalog__left-list">
                 <li className="catalog__left-gen">
                     <span>
@@ -100,7 +98,6 @@ export const CatalogList = () => {
                     <li
                         className="catalog__left-item"
                         key={item.id}
-                        // onClick={() => handleCategoryChange(item.name)}
                     >
                         <Checkbox
                             checked={selectedCategories[item._id]}

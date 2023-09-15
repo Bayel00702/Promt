@@ -1,16 +1,18 @@
 import React from 'react';
-import NewestInfo from "./NewestInfo/NewestInfo";
+import ViewstInfo from "./ViewstInfo/ViewstInfo";
+import NewestInfo from "./NewetInfo/NewetInfo";
+import {Link} from "react-router-dom";
 
 const Newest = () => {
     return (
         <section className="newest">
             <div className="container">
-                <NewestInfo/>
+                <ViewstInfo/>
                 <NewestInfo/>
 
-                <button className="promts__btnMarket">
+                <Link to='/catalog'  className="promts__btnMarket">
                     Browse Marketplace
-                </button>
+                </Link>
             </div>
         </section>
     );

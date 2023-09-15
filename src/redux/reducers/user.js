@@ -35,12 +35,6 @@ const userSlice = createSlice({
         updateFavorites: (state) => {
             state.favorites = JSON.parse(localStorage.getItem('favorites')) || [] && JSON.parse(localStorage.getItem('favorites')) || []
         }
-        // deleteInFavorites: (state, {payload}) => {
-        //     state.favorites = state.favorites.filter((item) => item.id !== payload);
-        // },
-        // setFav: (state, {payload}) => {
-        //     state.favorites = [...state.favorites, payload]
-        // }
 
     },
     extraReducers: (builder) => {

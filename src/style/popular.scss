@@ -37,14 +37,11 @@
     margin-bottom: 79px;
   }
   &__card{
-    padding: 187px 15px 16px;
-    background: url("../../src/assets/Picture.png") center/cover no-repeat;
-    display: flex;
-    column-gap: 72px;
-    position: relative;
+    background: rgba(255, 255, 255, 0.10);
     border-radius: 8.036px;
     border: 2.419px solid rgba(255, 255, 255, 0.30);
-    width: calc(25% - 8px);
+    position: relative;
+    width: 70%;
 
     &-title{
       color: #FFF;

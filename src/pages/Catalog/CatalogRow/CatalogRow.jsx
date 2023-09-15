@@ -14,7 +14,7 @@ const CatalogRow = () => {
         if (filter) {
             dispatch(getAllOrders({filter,search,price}));
         }
-    }, [filter,search]);
+    }, [filter,search,price]);
 
     // Обработка изменения данных и установка начальной страницы
     useEffect(() => {

@@ -2,39 +2,37 @@ import React, {useEffect} from 'react';
 import PromtsCard from "../../../../components/PromtsCard/PromtsCard";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllOrders} from "../../../../redux/reducers/orders";
+import  {Link} from 'react-router-dom'
 
 const Promts = () => {
     const dispatch = useDispatch();
-    const {data, filter} = useSelector(store => store.orders);
+    const {data, filter,search,price} = useSelector(store => store.orders);
 
     useEffect(() => {
-
-            dispatch(getAllOrders())
-
-    }, []);
-
+        if (filter) {
+            dispatch(getAllOrders({filter,search,price}));
+        }
+    }, [filter,search,price]);
     return (
         <section className="promts">
             <div className="container">
-                <div className="promts__btns">
-                    <button className="promts__btn">Featured Prompts</button>
-                    <button className="promts__btn">Trending Prompts</button>
-                    <button className="promts__btn">Newest Prompts</button>
-                </div>
+                <h2 className="promts__title">
+                    Declarations Promts
+                </h2>
 
                 <div className="promts__row">
                     {
-                        data.length ?
-                        data.map((item, idx) => (
+                        data ?
+                        data.filter((item,idx) => idx < 6).map((item, idx) => (
                             <PromtsCard item={item} key={item._id || idx}/>
                         ))
                             : <p>error</p>
                     }
                 </div>
 
-                <button className="promts__btnMarket">
+                <Link to='/catalog'  className="promts__btnMarket">
                     Browse Marketplace
-                </button>
+                </Link>
             </div>
         </section>
     );

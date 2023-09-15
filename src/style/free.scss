@@ -4,11 +4,12 @@
   &__row{
     display: flex;
     align-items: center;
-    justify-content: space-between;
   }
 
   &__left{
-    margin-right: 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &-title{
       color: #FFF;
@@ -17,68 +18,7 @@
       margin-bottom: 16px;
       text-align: center;
     }
-    &-card{
-      border-radius: 6px;
-      background: #FFF;
-      padding: 12px 12px 17px 12px;
-      text-align: center;
 
-      &__title{
-        color: #000;
-        text-align: center;
-        font-size: 20px;
-        font-weight: 500;
-        margin: 14px 0 12px;
-      }
-      &__price{
-        color: #000;
-        text-align: center;
-        font-size: 34px;
-        font-weight: 700;
-      }
-      &__btn{
-        border-radius: 100px;
-        border: 2px solid var(--black, #000);
-        background: var(--red, #F3848A);
-        padding: 12px 33px;
-        width: 189px;
-        color: var(--darkblue, #222236);
-        font-size: 20px;
-        font-weight: 500;
-        margin: 22px 0 27px;
-
-        &:hover{
-          border: 2px solid var(--black, #000);
-          background: transparent;
-        }
-      }
-      &__date{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        column-gap: 12px;
-
-        &-time{
-          display: flex;
-          flex-direction: column;
-          padding: 6px 15px;
-          border-radius: 6px;
-          border: 0.2px solid rgba(0, 0, 0, 0.40);
-          background: #FFF;
-          color: #000;
-          font-size: 17.739px;
-          font-weight: 500;
-
-          span{
-            color: #000;
-            text-align: center;
-            font-size: 10.348px;
-            font-weight: 400;
-            opacity: 0.65;
-          }
-        }
-      }
-    }
   }
   &__center{
     &-title{
@@ -138,6 +78,7 @@
       display: flex;
       flex-direction: column;
       row-gap: 25px;
+      width: 100%;
 
       &__card{
         padding: 144px 27px 9px 10px;

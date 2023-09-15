@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {useParams, Link} from 'react-router-dom'
+import {useParams, Link,useNavigate} from 'react-router-dom'
 import DeclarationSwiper from "./DeclarationSwiper/DeclarationSwiper";
 import {AiFillPhone} from 'react-icons/ai'
 import {useDispatch, useSelector} from "react-redux";
 import {getOneOrder} from "../../redux/reducers/product";
 import {useIncreaseViewsMutation} from "../../redux/reducers/increaseViews"
+import axios from "../../utils/axios";
+
 
 const Declaration = () => {
     const id = JSON.parse(localStorage.getItem("@@remember-rootState"))?.auth ? JSON.parse(localStorage.getItem("@@remember-rootState"))?.auth?.user?._id : ''
+    const token = localStorage.getItem("@@remember-rootState") ? JSON.parse(localStorage.getItem("@@remember-rootState"))?.auth?.token : "";
 
     const [increaseViews] = useIncreaseViewsMutation();
 
@@ -16,45 +19,25 @@ const Declaration = () => {
         const params = useParams();
 
 
-
     useEffect(() => {
         dispatch(getOneOrder(params.id));
         increaseViews({orderId: params.id, userId: id});
     }, []);
+    const navigate = useNavigate();
 
+    const delOrder = (data) => {
+        axios.delete(`/order/${order._id}`, data,{
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`
+            },
+        }).then(({data}) => {
+                console.log(data);
+                navigate('/')
+            }
+        )
+    };
 
-
-
-
-
-
-    // if (user._id === order?.creatorData?.id) {
-    //     // If the user is the creator, simply fetch the order
-    //     axios
-    //         .get(`/order/${params.id}`)
-    //         .then((res) => {
-    //             if (res.status === 200) {
-    //                 setViewsCount(res.data.views);
-    //             }
-    //         })
-    //         .catch((error) => {
-    //             console.error(error);
-    //         });
-    // } else {
-    //     // If the user is not the creator, fetch the order with views
-    //     axios
-    //         .get(`/order/${params.id}?views=${order.views}`)
-    //         .then((res) => {
-    //             if (res.status === 200) {
-    //                 setViewsCount(res.data.views);
-    //             }
-    //         })
-    //         .catch((error) => {
-    //             console.error(error);
-    //         });
-    // }
-
-    // console.log(viewsCount)
     return (
         <section className="declaration">
             <div className="container">
@@ -99,7 +82,11 @@ const Declaration = () => {
 
                         <p className="declaration__right-phone"><span><AiFillPhone/></span>{order.phone}</p>
                         <p className="declaration__right-phone">Просмотрено: <span>{order.views}</span></p>
-
+                        {
+                            order.creatorData.id === id ? <p style={{background: 'red'}} className="declaration__right-phone"
+                            onClick={delOrder}
+                            ><span>Удалить заказ </span></p> :  ""
+                        }
                     </div>
                 </div>
             </div>

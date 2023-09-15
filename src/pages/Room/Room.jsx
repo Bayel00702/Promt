@@ -43,6 +43,20 @@ const Room = () => {
             }
         );
     };
+
+    const delUser = (data) => {
+        axios.delete(`/user/${user._id}`, data,{
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`
+            },
+        }).then(({data}) => {
+                console.log(data);
+                navigate('/')
+        }
+        )
+    };
+
     const handleImageChange = (event) => {
         setSelectedImage(event.target.files[0]);
         console.log(event.target.files[0])
@@ -102,8 +116,8 @@ const Room = () => {
                                             <img src={user.image} alt="" className="room__right-image__img"/>
                                             {user.name}
                                         </li>
-                                        <li className={`room__left-item`}><span><HiOutlineMail/></span>Email</li>
-                                        <li className="room__left-item"><span><AiFillPhone/></span>Phone Number</li>
+                                        <li className={`room__left-item ${tab2 === 'Email' ? 'active' : ''}`}><span><HiOutlineMail/></span>Email</li>
+                                        <li className={`room__left-item `}><span><AiFillPhone/></span>Phone Number</li>
                                         <li className={`room__left-item ${tab2 === 'Security and entry' ? 'active' : ''}`} onClick={() => setTab2('Security and entry')}><span><BiSolidKey/></span>Security and entry</li>
                                     </ul>
 
@@ -112,7 +126,13 @@ const Room = () => {
                                             dispatch(logOutUser());
                                             navigate('/')
                                         }} className="room__left-signOut">Sign Out</button>
-                                        <button className="room__left-btn">Delete account</button>
+                                        <button className="room__left-btn"
+                                        onClick={() =>{
+                                            delUser();
+                                            dispatch(logOutUser());
+                                            navigate('/')
+                                        }}
+                                        >Delete account</button>
                                     </div>
                                 </div>
                                 {
@@ -225,8 +245,7 @@ const Room = () => {
                                         <PromtsCard item={item}/>
                                     ))
                                 }
-                            </div> :
-                            ''
+                            </div> : ''
                     }
 
                 </div>

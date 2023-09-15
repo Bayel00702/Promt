@@ -1,25 +1,27 @@
-import React from 'react';
-import Item from '../../../../assets/Picture.png'
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {getDescOrders} from "../../../../redux/reducers/descOrders";
+import PopularCard from "../../../../components/PopularCard/PopularCard";
 
 const Free = () => {
+    const dispatch= useDispatch();
+    const {desc} = useSelector(store => store.orderDesc);
+
+
+    useEffect(() => {
+        dispatch(getDescOrders())
+    }, []);
     return (
         <section className="free">
             <div className="container">
                 <div className="free__row">
                     <div className="free__left">
                         <h2 className="free__left-title">Free prompt of the week</h2>
-                        <div className="free__left-card">
-                            <img src={Item} alt="" className="free__left-card__img"/>
-                            <h3 className="free__left-card__title">Kaleidoscope Artistic Tiles</h3>
-                            <h2 className="free__left-card__price">$2.99</h2>
-                            <button className="free__left-card__btn">Buy Now</button>
-
-                            <ul className="free__left-card__date">
-                                <li className="free__left-card__date-time">22<span>Hours</span></li>
-                                <li className="free__left-card__date-time">58<span>Min</span></li>
-                                <li className="free__left-card__date-time">16<span>Sec</span></li>
-                            </ul>
-                        </div>
+                        {
+                            desc.filter((item,idx) => idx < 1).map((item) => (
+                                <PopularCard item={item}/>
+                            ))
+                        }
                     </div>
                     <div className="free__center">
                         <h2 className="free__center-title">
