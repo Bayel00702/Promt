@@ -7,7 +7,6 @@ const Free = () => {
     const dispatch= useDispatch();
     const {desc} = useSelector(store => store.orderDesc);
 
-
     useEffect(() => {
         dispatch(getDescOrders())
     }, []);
@@ -19,7 +18,7 @@ const Free = () => {
                         <h2 className="free__left-title">Free prompt of the week</h2>
                         {
                             desc.filter((item,idx) => idx < 1).map((item) => (
-                                <PopularCard item={item}/>
+                                <PopularCard item={item} key={item._id}/>
                             ))
                         }
                     </div>

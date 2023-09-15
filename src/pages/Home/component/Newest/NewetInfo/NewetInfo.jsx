@@ -21,7 +21,7 @@ const NewestInfo = () => {
             <div className="newest__row">
                 {
                     newOrder.filter((item,idx) => idx < 4).map((item) => (
-                        <PromtsCard item={item}/>
+                        <PromtsCard item={item} key={item._id}/>
                     ))
                 }
             </div>

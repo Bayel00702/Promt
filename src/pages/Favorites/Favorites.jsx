@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import { useSelector} from "react-redux";
 import PromtsCard from "../../components/PromtsCard/PromtsCard";
 
 const Favorites = () => {
 
-    const dispatch = useDispatch();
     const {favorites} = useSelector(store => store.oneUser);
     const [page, setPage] = useState(1);
     const [active, setActive] = useState(false);

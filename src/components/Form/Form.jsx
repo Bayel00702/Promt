@@ -4,10 +4,9 @@ import {Link, useLocation, useNavigate} from 'react-router-dom'
 import {useForm} from "react-hook-form";
 import {AiFillCamera} from 'react-icons/ai'
 import InputMask from 'react-input-mask';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {authUser} from '../../redux/reducers/auth';
 import axios from "../../utils/axios";
-import {toast} from "react-toastify";
 
 
 const Form = () => {
@@ -62,7 +61,6 @@ const Form = () => {
         }
     };
 
-    const [image, setImage] = useState([]);
     const [getImageUrl, setGetImageUrl] = useState("");
 
     const [selecttedImage, setSeltectedImage] = useState(null);

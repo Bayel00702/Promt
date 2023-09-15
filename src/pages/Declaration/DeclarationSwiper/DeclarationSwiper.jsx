@@ -1,14 +1,10 @@
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
-// import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
 export default function App({order}) {
@@ -28,13 +24,14 @@ export default function App({order}) {
                 className="mySwiper2"
             >
                 <SwiperSlide>
-                    <img src={order.image} />
+                    <img src={order.image} alt="" />
+
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={order.image} />
+                    <img src={order.image} alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={order.image} />
+                    <img src={order.image} alt="" />
                 </SwiperSlide>
 
             </Swiper>
@@ -48,13 +45,13 @@ export default function App({order}) {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <img src={order.image} />
+                    <img src={order.image} alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={order.image} />
+                    <img src={order.image} alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                <img src={order.image} />
+                <img src={order.image} alt="" />
                 </SwiperSlide>
             </Swiper>
         </div>

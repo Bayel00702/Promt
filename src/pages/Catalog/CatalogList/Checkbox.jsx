@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Checkbox from '@mui/material/Checkbox';
+import CatalogSelect from "./CatalogSelect";
 
 export default function ControlledCheckbox() {
     const [checked, setChecked] = React.useState(true);

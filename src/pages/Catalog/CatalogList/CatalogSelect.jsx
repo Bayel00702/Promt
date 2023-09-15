@@ -9,7 +9,6 @@ import {changePrice} from "../../../redux/reducers/orders";
 
 const CatalogSelect = () => {
     const [price, setPrice] = React.useState('');
-    console.log(price)
     const dispatch = useDispatch();
     dispatch(changePrice(price));
 

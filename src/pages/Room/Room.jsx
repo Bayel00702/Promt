@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {HiOutlineMail} from 'react-icons/hi';
 import {BiSolidKey} from 'react-icons/bi';
 import {BsTrashFill} from 'react-icons/bs'
@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 import {AiFillEyeInvisible, AiFillEye,AiFillPhone} from 'react-icons/ai'
 import PromtsCard from "../../components/PromtsCard/PromtsCard";
 import axios from "../../utils/axios";
-import {useNavigate, useParams} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
 import {logOutUser, setUser} from "../../redux/reducers/auth";
 import {getAllUserOrders} from "../../redux/reducers/userOrders";

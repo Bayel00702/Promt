@@ -27,7 +27,7 @@ const PopularDesc = () => {
             <div className="popular__row">
                 {
                     desc.filter((item,idx) => idx < 4).map((item) => (
-                        <PromtsCard item={item} key={item.id}/>
+                        <PromtsCard item={item} key={item._id}/>
                     ))
                 }
             </div>

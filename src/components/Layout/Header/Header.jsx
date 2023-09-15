@@ -4,7 +4,7 @@ import {AiOutlineSearch,AiOutlineTwitter,AiOutlineUser} from 'react-icons/ai';
 import {BsFacebook,BsInstagram} from 'react-icons/bs';
 import {Link, useNavigate, useLocation} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {getAllOrders, setSearchQuery} from '../../../redux/reducers/orders';
+import { setSearchQuery} from '../../../redux/reducers/orders';
 
 
 const Header = () => {

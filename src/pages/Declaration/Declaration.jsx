@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useParams, Link,useNavigate} from 'react-router-dom'
 import DeclarationSwiper from "./DeclarationSwiper/DeclarationSwiper";
 import {AiFillPhone} from 'react-icons/ai'
