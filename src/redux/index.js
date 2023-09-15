@@ -14,6 +14,7 @@ import asc from "./reducers/asc";
 import desc from "./reducers/desc";
 import orderDesc from "./reducers/descOrders";
 import newOrders from "./reducers/newOrder";
+import resUser from "./reducers/resUser";
 import {apiSlice} from './reducers/increaseViews'
 
 
@@ -36,6 +37,7 @@ const store = configureStore({
         desc,
         orderDesc,
         newOrders,
+        resUser,
         [apiSlice.reducerPath]: apiSlice.reducer
     }),
     middleware: (getDefaultMiddleware) =>

@@ -230,4 +230,12 @@
       }
 
   }
+
+  &__resUser{
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(13.5px);
+    padding: 20px 30px;
+    width: 70%;
+  }
 }

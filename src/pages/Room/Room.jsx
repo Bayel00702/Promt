@@ -8,9 +8,10 @@ import PromtsCard from "../../components/PromtsCard/PromtsCard";
 import axios from "../../utils/axios";
 import {useNavigate} from 'react-router-dom'
 import {useDispatch, useSelector} from "react-redux";
-import {logOutUser, setUser} from "../../redux/reducers/auth";
+import {logOutUser, setUser, setImage} from "../../redux/reducers/auth";
 import {getAllUserOrders} from "../../redux/reducers/userOrders";
 import {getOneUser} from "../../redux/reducers/user";
+import InputMask from "react-input-mask";
 
 const Room = () => {
 
@@ -25,6 +26,7 @@ const Room = () => {
     const [tab, setTab] = useState("Profile settings");
     const [tab2, setTab2] = useState("Omurzakov Sanjarbek");
     const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedUser, setSelectedUser] = useState({});
 
     const token = localStorage.getItem("@@remember-rootState") ? JSON.parse(localStorage.getItem("@@remember-rootState"))?.auth?.token : "";
 
@@ -58,8 +60,12 @@ const Room = () => {
     };
 
     const handleImageChange = (event) => {
-        setSelectedImage(event.target.files[0]);
-        console.log(event.target.files[0])
+
+        console.log(event)
+    };
+    const handleChangeUser = (event) => {
+
+        console.log(event)
     };
 
     const resUpload = async (file) => {
@@ -71,8 +77,22 @@ const Room = () => {
             },
         }).then(({data}) => {
             console.log(data);
-            dispatch(setUser(data.user))
+            dispatch(setImage(data.user))
         })
+    };
+
+    const resUser =  (data) =>{
+        axios.post(`/user/${user._id}`, data, {
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`
+            },
+        }).then(({data}) =>
+            {
+                dispatch(setUser(data.user));
+                navigate('/')
+            }
+        )
     };
 
 
@@ -116,7 +136,7 @@ const Room = () => {
                                             <img src={user.image} alt="" className="room__right-image__img"/>
                                             {user.name}
                                         </li>
-                                        <li className={`room__left-item ${tab2 === 'Email' ? 'active' : ''}`}><span><HiOutlineMail/></span>Email</li>
+                                        <li className={`room__left-item ${tab2 === 'Email' ? 'active' : ''}`} onClick={() => setTab2('Email')}><span><HiOutlineMail/></span>Email</li>
                                         <li className={`room__left-item `}><span><AiFillPhone/></span>Phone Number</li>
                                         <li className={`room__left-item ${tab2 === 'Security and entry' ? 'active' : ''}`} onClick={() => setTab2('Security and entry')}><span><BiSolidKey/></span>Security and entry</li>
                                     </ul>
@@ -157,7 +177,7 @@ const Room = () => {
 
                                             <button  onClick={() => resUpload(selectedImage)} className="room__right-btn">Save</button>
                                         </div>
-                                        :
+                                        : tab2 === 'Security and entry' ?
                                         <form
                                             onSubmit={handleSubmit(onSubmit)}
                                             className="room__pass">
@@ -235,7 +255,30 @@ const Room = () => {
                                                 </p>
                                             </label>
                                             <button className="room__right-btn" type='submit'>Submit</button>
-                                        </form>
+                                        </form> :
+                                        tab2 === 'Email' ?
+                                            <form
+                                                onSubmit={handleSubmit(handleChangeUser)}
+                                                className="room__resUser">
+                                                <label htmlFor="" className="room__right-label">
+                                                    <h3 className="room__right-subtitle">My name </h3>
+                                                    <input placeholder={user.name} {...register('name')} type="text" className="room__right-input"/>
+                                                </label>
+                                                <label htmlFor="" className="room__right-label">
+                                                    <h3 className="room__right-subtitle">My login </h3>
+                                                    <input placeholder={user.login} {...register('login')} type="text" className="room__right-input"/>
+                                                </label>
+                                                <label htmlFor="" className="room__right-label">
+                                                    <h3 className="room__right-subtitle">My Email</h3>
+                                                    <input placeholder={user.email} {...register('email')} type="email" className="room__right-input"/>
+                                                </label>
+                                                <label htmlFor="" className="room__right-label">
+                                                    <h3 className="room__right-subtitle">Phone*</h3>
+                                                    <InputMask mask={`+\\9\\96(999)99-99-99`} type='tel'  {...register('number')} className='room__right-input' placeholder='Номер телефона' />
+                                                </label>
+                                                <button onClick={() => resUser(selectedUser)}  type="submit" className="room__right-btn">Save</button>
+                                            </form>
+                                            : ''
                                 }
                             </div>
                             : tab === 'My announcement' ?
