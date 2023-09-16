@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactPlayer from "react-player";
+import {Link} from 'react-router-dom'
 
 const Earn = () => {
     return (
@@ -19,7 +20,7 @@ const Earn = () => {
                             <br/>
                             Upload your prompt, connect with Stripe, and become a seller in just 2 minutes.
                         </p>
-                        <button className="earn__right-btn">Sell A Prompt</button>
+                        <Link to={'/adddeclaration'} className="earn__right-btn">Sell A Prompt</Link>
 
                     </div>
                 </div>

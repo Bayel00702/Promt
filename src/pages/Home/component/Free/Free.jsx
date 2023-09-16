@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getDescOrders} from "../../../../redux/reducers/descOrders";
 import PopularCard from "../../../../components/PopularCard/PopularCard";
+import {Link} from 'react-router-dom'
 
 const Free = () => {
     const dispatch= useDispatch();
@@ -28,8 +29,8 @@ const Free = () => {
                         </h2>
                         <p className="free__center-text">Find top prompts, produce better results, save on API costs, sell your own prompts.</p>
                         <div className="free__center-btns">
-                            <button className="free__center-btn">Sell A Prompt</button>
-                            <button className="free__center-btn">Find a Prompts</button>
+                            <Link to={'/adddeclaration'} className="free__center-btn">Sell A Prompt</Link>
+                            <Link to={'/catalog'} className="free__center-btn">Find a Prompts</Link>
                         </div>
                     </div>
                     <div className="free__right">
