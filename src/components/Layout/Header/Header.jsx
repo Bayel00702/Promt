@@ -90,7 +90,7 @@ const Header = () => {
                     </div>
                     {
                         JSON.parse(localStorage.getItem('@@remember-rootState'))?.auth?.user !== null ?
-                            <Link to='/adddeclaration' className="header__btn">Подать объявление</Link>
+                            <Link to='/adddeclaration' className="header__btn">order</Link>
                             : ''
 
                     }

@@ -1,0 +1,735 @@
+@media (max-width:1440px) {
+    .gift__img{
+        width:1440px;
+    }
+}
+@media (max-width:1200px) {
+    .header__row{
+        justify-content: space-evenly;
+    }
+}
+@media(max-width:1024px){
+    .catalog__row-img1 {
+        width: 424px;
+        height: 226px;
+    }
+    .sales__bottom-btn{
+        margin-left:1px;
+        padding: 9px 22px;
+    }
+    .sales__row-img{
+        width: 229px;
+    }
+    .sales__row-yellow{
+        top: 194px;
+    }
+    .why__img{
+        left: 460px;
+    }
+    .why__img2{
+        left: 525px;
+    }
+    .why__card1-text1{
+        right: 226px;
+    }
+    .why__card2-text2{
+        right: 400px;
+    }
+    .suggestions__row-right{
+        display: none;
+    }
+    .footer__row{
+        flex-wrap: wrap;
+    }
+}
+@media (max-width:992px) {
+    .description__row-btn {
+        font-size: 18px;
+    }
+    .sales__bottom-btn{
+        padding: 9px 18px;
+    }
+    .sales__row-img{
+        width: 217px;
+    }
+    .sales__row-yellow{
+        top: 181px;
+    }
+    .why__img{
+        left: 427px;
+    }
+    .why__img2{
+        left: 494px;
+    }
+    .catalog__row-img1{
+        width: 391px;
+        height: 226px;
+    }
+}
+@media(max-width:767px){
+    .description__row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .description__row-right {
+        padding-top: 50px;
+        align-items: center;
+    }
+    .map {
+        padding: 100px 0 80px 0;
+    }
+    .map__row{
+        flex-direction: column;
+        align-items: center;
+    }
+    .map__row-right{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .map__row-title{
+        font-size: 30px;
+    }
+    .viewing__card-row {
+        flex-direction: column;
+    }
+    .categories__row{
+        display: block;
+    }
+    .gift{
+        padding: 192px 0 100px;
+    }
+    .gift__img{
+        width: 767px;
+        top: 0;
+    }
+    .sales__row-card {
+        width: calc(51% - 9.5px);
+    }
+    .sales__row-yellow {
+        top: 296px;
+    }
+    .sales__row-card1{
+        display: none;
+    }
+    .sales__row-img {
+        width: 354px;
+    }
+    .suggestions__row-input {
+        width: 640px;
+    }
+    .catalog__row-img1{
+        width: 327px;
+        height: 158px;
+    }
+    .catalog__row-img2{
+        width: 200px;
+    }
+    .delivery__subtitle{
+        font-size: 26px;
+    }
+    .why__img{
+        left: 203px;
+    }
+    .why__card-subtitle{
+        font-size: 15px;
+    }
+    .why__img2{
+        left: 269px;
+    }
+    .why__card2-text2 {
+        right: 291px;
+        padding: 58px 84px;
+    }
+    .why__card2-subtitle2 {
+        font-size: 15px;
+    }
+    .basket__card-title {
+        font-size: 30px;
+    }
+    .basket__card-price__btn {
+        padding: 6px 10px;
+    }
+}
+@media(max-width:576px){
+    .map__row-left{
+        width: 576px;
+    }
+    .questions__title {
+        font-size: 38px;
+    }
+    .map__row-title {
+        font-size: 23px;
+    }
+    .personal__info3 {
+        margin-right: 78px;
+    }
+    .personal__row {
+        column-gap: 24px;
+    }
+    .categories__card {
+        width: 278px;
+    }
+    .categories__card-img{
+        width: 259px;
+    }
+    .personal__title {
+        font-size: 30px;
+    }
+    .categories__bottom-title {
+        font-size: 15px;
+    }
+    .basket__card-title {
+        margin-right: 80px;
+    }
+    .basket__card-title {
+        font-size: 18px;
+    }
+    .gift__title{
+        font-size: 54px;
+    }
+    .sales__row-img{
+        width: 260px;
+    }
+    .sales__row-yellow{
+        top: 217px;
+    }
+    .why__img{
+        left: 13px;
+    }
+    .why__card-text {
+        padding: 52px 41px;
+        top: 345px;
+        right: 256px;
+    }
+    .why__card-subtitle {
+        font-size: 11px;
+    }
+    .why__card1-text1 {
+        padding: 46px 35px;
+        top: 171px;
+        right: 61px;
+    }
+    .why__card1-subtitle1 {
+        font-size: 11px;
+    }
+    .why__img1 {
+        width: 557px;
+    }
+    .why__img2 {
+        left: 78px;
+    }
+    .why__card2-text2 {
+        top: 173px;
+        right: 191px;
+        padding: 40px 65px;
+    }
+        .why__card2-subtitle2 {
+        font-size: 11px;
+    }
+    .catalog__row-img2 {
+        width: 150px;
+    }
+    .catalog__row-img1 {
+        width: 236px;
+        height: 116px;
+    }
+    .delivery__subtitle {
+        font-size: 20px;
+    }
+    .suggestions__row-input {
+        width: 540px;
+    }
+}
+
+@media (max-width:425px) {
+    .description__img {
+        width: 378px;
+        height: 352px;
+    }
+    .description__btn {
+        width: 100px;
+    }
+    .description__row-right__info {
+        flex-direction: column;
+    }
+    .map {
+        padding: 20px 0 80px 0;
+    }
+    .map__row-left {
+        width: 425px;
+    }
+    .map__row-title {
+        font-size: 19px;
+    }
+    .questions__title {
+        font-size: 32px;
+    }
+    .questions__input, .questions__input1 {
+        font-size: 26px;
+    }
+    .questions__input1{
+        padding-bottom: 100px;
+    }
+    .personal__row-left{
+        display: none;
+    }
+    .personal__mob{
+        display: block;
+    }
+    .categories__card-img {
+        width: 183px;
+    }
+    .categories__card {
+        width: 202px;
+    }
+    .categories__bottom-line,.categories__bottom-title {
+        font-size: 10px;
+    }
+    .categories__bottom-btn {
+        font-size: 10px;
+        padding: 9px 24px;
+    }
+    .basket__card-title {
+        margin-right: 20px;
+    }
+    .basket {
+        padding: 30px 0 0 0;
+    }
+    .basket__card-img{
+        width: 230px;
+    }
+    .basket__card-subtitle {
+        font-size: 18px;
+    }
+    .decor__form-input {
+        padding: 24px 200px 24px 45px;
+    }
+    .header__row-right{
+        display:none;
+    }
+    .header__row-right__mob{
+        display: flex;
+    }
+    .gift__img{
+        left: 1px;
+    }
+    .gift__title {
+        font-size: 33px;
+
+    }
+    .gift__btn {
+        display: none;
+    }
+    .sales__title {
+        font-size: 44px;
+        text-align: center;
+    }
+    .sales__row-img {
+        width: 185px;
+    }
+    .sales__row-yellow {
+        top: 148px;
+    }
+    .sales__subtitle {
+        font-size: 11px;
+    }
+    .sales__bottom-title {
+        font-size: 13px;
+    }
+    .sales__bottom-btn {
+        font-size: 13px;
+        padding: 9px 15px;
+    }
+    .why__title {
+        font-size: 32px;
+        text-align: center;
+    }
+    .why__img {
+        width: 180px;
+        height: 215px;
+        left: 245px;
+    }
+    .why__card-text {
+        padding: 24px 15px;
+        font-size: 11px;
+        top: 75px;
+        right: 110px;
+    }
+    .why__img1{
+        width: 249px;
+        height: 155px;
+    }
+    .why__card1-text1 {
+        padding: 46px 35px;
+        top: 86px;
+        right: 61px;
+        font-size: 11px;
+    }
+    .why__img2{
+        width: 190px;
+        height: 220px;
+        left: 234px;
+    }
+    .why__card2-text2 {
+        top: 64px;
+        right: 52px;
+        padding: 40px 65px;
+        font-size: 11px;
+    }
+    .catalog__row-img2 {
+        width: 100px;
+    }
+    .catalog__row-img1 {
+        width: 185px;
+        height: 73px;
+    }
+    .for{
+        display: none;
+    }
+    .delivery{
+        padding: 61px 0 140px;
+    }
+    .delivery__title {
+        font-size: 32px;
+    }
+    .delivery__subtitle {
+        font-size: 16px;
+    }
+    .suggestions__row-input {
+        width: 404px;
+    }
+    .footer__contact-item, .footer__contact-link {
+        font-size: 19px;
+    }
+    .gift__img{
+        width: 425px;
+        top: 0;
+    }
+    .gift{
+        padding: 130px 0 50px;
+    }
+    .suggestions__title {
+        font-size: 32px;
+        text-align: center;
+    }
+    .catalog__title {
+        text-align: center;
+        font-size: 32px;
+    }
+    .decor__title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width:375px) {
+    .description__img {
+        width: 333px;
+        height: 300px;
+    }
+    .description__img {
+        width: 289px;
+        height: 252px;
+    }
+    .map__row-left {
+        width: 375px;
+    }
+    .map__row-title {
+        font-size: 17px;
+    }
+    .questions__input, .questions__input1 {
+        font-size: 20px;
+    }
+    .questions__btn {
+        font-size: 19px;
+    }
+    .personal__row-menu__mob-link {
+        font-size: 11px;
+    }
+    .personal__btn {
+        font-size: 20px;
+        padding: 22px 51px;
+        margin: 90px 90px 0 90px;
+    }
+    .personal__subtitle {
+        font-size: 15px;
+    }
+    .personal__title {
+        font-size: 29px;
+    }
+
+    .categories__card{
+        width: 177px;
+        height: 250px;
+    }
+    .categories__card-img {
+        width: 159px;
+    }
+    .categories__card-subtitle {
+        font-size: 9px;
+        margin-bottom: 16px;
+    }
+    .categories__bottom-btn {
+        padding: 9px 12px;
+    }
+    .basket__card-icon{
+        display: none;
+    }
+    .basket__card-icon__mob{
+        display: block;
+    }
+    .basket__card-img {
+        width: 100px;
+        height: 100px;
+    }
+    .basket__card-title {
+        margin-right: 24px;
+        font-size:14px;
+    }
+    .basket__card-subtitle {
+        font-size: 11px;
+    }
+    .basket__card-info {
+        padding-bottom: 40px;
+    }
+    .orders__title {
+        font-size: 32px;
+    }
+    .orders__row-subtitle {
+        font-size: 16px;
+    }
+    .orders__row-title {
+        font-size: 16px;
+    }
+    .orders__label {
+        font-size: 12px;
+    }
+    .decor__title {
+        font-size: 27px;
+    }
+    .decor__subtitle {
+        font-size: 14px;
+    }
+    .gift__img {
+        width: 375px;
+    }
+
+    .gift {
+        padding: 97px 0 50px;
+    }
+
+    .sales__row-img {
+        width: 159px;
+    }
+
+    .sales__row-yellow {
+        top: 122px;
+    }
+
+    .sales__subtitle {
+        font-size: 9px;
+    }
+
+    .sales__bottom-line {
+        font-size: 10px;
+    }
+
+    .sales__bottom-title {
+        font-size: 10px;
+    }
+
+    .sales__bottom-btn {
+        font-size: 10px;
+    }
+
+    .why__img {
+        left: 195px;
+    }
+
+    .why__img2 {
+        left: 184px;
+    }
+
+    .catalog__row {
+        display: none;
+    }
+
+    .catalog__row-mob {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 20px;
+        row-gap: 20px;
+        justify-content: space-evenly;
+    }
+
+    .catalog__row-card__center {
+        margin: 0 auto;
+    }
+
+    .suggestions__row-input__down {
+        padding-bottom: 222px;
+    }
+
+    .suggestions__row-input {
+        width: 300px;
+    }
+
+    .footer__row-img {
+        width: 167.5px;
+    }
+
+    .suggestions__title {
+        font-size: 25px;
+    }
+
+    .delivery__subtitle {
+        font-size: 14px;
+    }
+
+    .footer__contact-item, .footer__contact-link {
+        font-size: 16px;
+    }
+
+    .footer__subtitle {
+        font-size: 20px;
+    }
+}
+
+@media (max-width:320px) {
+    .map__row-left {
+        width: 320px;
+    }
+    .map__row-title {
+        font-size: 15px;
+    }
+    .questions__title {
+        font-size: 25px;
+    }
+    .personal__row-menu__mob-link {
+        font-size: 9px;
+    }
+    .personal__btn {
+        font-size: 14px;
+        padding: 22px 29px;
+        margin: 38px 90px 0 96px;
+    }
+
+    .categories__card {
+        width: 150px;
+        height: 223px;
+    }
+    .categories__card-img {
+        width: 132px;
+    }
+    .categories__card-subtitle {
+        font-size: 8px;
+    }
+    .categories__bottom-line, .categories__bottom-title {
+        font-size: 8px;
+    }
+    .categories__bottom-btn {
+        padding: 9px 4px;
+    }
+    .basket__card-info {
+        padding-bottom: 24px;
+    }
+    .catalog__row-mob{
+        column-gap: 5px;
+    }
+    .catalog__row-card{
+        width:calc(50% - 10px);
+    }
+    .gift__img {
+        width: 320px;
+    }
+    .gift__title {
+        font-size: 18px;
+    }
+    .gift__subtitle {
+        font-size: 12px;
+    }
+    .gift {
+        padding: 82px 0 1px;
+    }
+    .sales__title{
+        font-size: 30px;
+    }
+    .sales__row-img {
+        width: 133px;
+    }
+    .sales__row-yellow {
+        top: 108px;
+        font-size: 11px;
+    }
+    .sales__row-pink{
+        font-size: 12px;
+    }
+    .sales__row-orange,.sales__row-green{
+        font-size: 11px;
+    }
+    .sales__subtitle {
+        margin-bottom: 16px;
+        font-size: 8px;
+    }
+    .sales__bottom-title,.sales__bottom-line{
+        font-size: 6px;
+    }
+    .sales__bottom-btn {
+        font-size: 7px;
+    }
+    .why__title {
+        font-size: 21px;
+    }
+    .why__img {
+        left: 140px;
+    }
+    .why__card-subtitle,.why__card1-subtitle1,.why__card2-subtitle2{
+        font-size: 8px;
+    }
+    .why__card-text {
+        padding: 24px 15px;
+        top: 75px;
+        right: 110px;
+    }
+    .why__card1-text1 {
+        padding: 46px 35px;
+        top: 86px;
+        right: 61px;
+    }
+    .why__img2 {
+        left: 128px;
+    }
+    .why__card2-text2 {
+        top: 64px;
+        right: 52px;
+        padding: 22px 62px;
+    }
+    .delivery__title {
+        font-size: 22px;
+        margin-bottom: 50px;
+    }
+    .delivery__subtitle {
+        font-size: 11px;
+    }
+    .suggestions__title {
+        font-size: 25px;
+    }
+    .suggestions__row-input {
+        width: 300px;
+    }
+    .footer__row-img {
+        width: 150px;
+    }
+    .footer__title {
+        font-size: 28px;
+    }
+    .footer__contact-item, .footer__contact-link {
+        font-size: 14px;
+    }
+    .footer__subtitle {
+        font-size: 17px;
+    }
+    .decor__btn{
+        font-size: 15px;
+    }
+}

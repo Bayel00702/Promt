@@ -4,6 +4,7 @@
   height: 100%;
   padding: 100px 0;
 
+  left: 37%;
   &__title{
     color: var(--white, #FFF);
     text-align: center;
@@ -68,6 +69,7 @@
 
   &__form{
     padding: 104px 31px 25px;
+
     &-label{
       width: 100%;
     }

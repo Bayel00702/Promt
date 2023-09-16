@@ -16,7 +16,7 @@ const PopularCard = ({item}) => {
         <>
             <div  className="popular__card">
                 <Link to={`/declaration/${item._id}`}>
-                    <img src={item.image } alt={item.title} className="promts__card-img"/>
+                    <img src={item.image } alt={item.title} className="popular__card-img"/>
                 </Link>
                 <div className="promts__card-infos">
                     <div className="promts__card-info">

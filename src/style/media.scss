@@ -1,0 +1,14 @@
+@media (max-width: 1024px) {
+  .free__center-title{
+    font-size: 32px;
+    span{
+      font-size: 32px;
+    }
+  }
+  .promts__card{
+    height: 300px;
+    &-img{
+height: 150px;
+    }
+  }
+}

@@ -94,7 +94,7 @@ const AddDeclaration = () => {
                                 <span> <AiFillCamera/></span>
                                 <input onChange={handleImageChange} accept='image/*'  className="add__images-input" type="file"/>
                                 <button onClick={() => addImage(selectedImage)} type="button" className="add__images-title">Add a photo</button>
-                                <p className="add__images-text">The main photo will be displayed in the search results</p>
+                                <p className="add__images-text">The main photo will be <br/> displayed in the search results</p>
                             </div>
                             <label htmlFor="" className="add__label">
                                 <h3 className="add__subtitle">Description</h3>

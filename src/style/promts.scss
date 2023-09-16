@@ -46,6 +46,7 @@
     border-radius: 8.036px;
     border: 2.419px solid rgba(255, 255, 255, 0.30);
     width: calc(25% - 8px);
+    height: 400px;
     position: relative;
 
     &-infos{
@@ -93,7 +94,9 @@
     }
 
     &-img{
-      width: 100%;
+      width:100%;
+      height: 244px;
+      object-fit: cover;
       border-radius: 8.036px 8.036px 0 0;
     }
 
