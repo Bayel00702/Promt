@@ -68,7 +68,7 @@ const Header = () => {
                             <li className="header__item"><Link to="/favorites" className="header__item">Favorites</Link></li>
                             {
                                 JSON.parse(localStorage.getItem('@@remember-rootState'))?.auth?.user === null ?
-                                    <li className="header__item"><Link to="/login" className="header__item">Login</Link></li>
+                                    <li className="header__item"><Link to="/register" className="header__item">Login</Link></li>
                                     : ''
                             }
                         </ul>

@@ -35,14 +35,11 @@ const CatalogRow = () => {
                 Trending Prompts
             </h2>
             <div className="catalog__row2">
-                {
+                {data.length ?
                     data.filter((item, idx) => idx >= page * 6 - 6 && idx < page * 6).map((item, idx) => (
                         <PromtsCard item={item} key={item._id || idx}/>
                     ))
-                }
-
-
-
+                : <h3 className='favorites__error'>Catalog clear</h3>}
             </div>
             {
                 catalogPagesCount.length !== 1 &&

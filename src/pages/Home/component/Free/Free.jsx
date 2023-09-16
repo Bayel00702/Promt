@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 const Free = () => {
     const dispatch= useDispatch();
     const {desc} = useSelector(store => store.orderDesc);
+    const {user} = useSelector(store => store.oneUser)
 
     useEffect(() => {
         dispatch(getDescOrders())
@@ -29,7 +30,7 @@ const Free = () => {
                         </h2>
                         <p className="free__center-text">Find top prompts, produce better results, save on API costs, sell your own prompts.</p>
                         <div className="free__center-btns">
-                            <Link to={'/adddeclaration'} className="free__center-btn">Sell A Prompt</Link>
+                            {user === null ? <Link to={'/adddeclaration'} className="free__center-btn">Sell A Prompt</Link> : <Link to={'/register'} className="free__center-btn">Sell A Prompt</Link>}
                             <Link to={'/catalog'} className="free__center-btn">Find a Prompts</Link>
                         </div>
                     </div>

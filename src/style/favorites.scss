@@ -1,6 +1,12 @@
 .favorites{
   padding: 100px 0 ;
 
+  &__error{
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+  }
   &__row{
     display: flex;
     flex-wrap: wrap;

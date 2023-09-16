@@ -23,14 +23,15 @@ const Favorites = () => {
     return (
         <section className="favorites">
             <div className="container">
-                <div className="favorites__row">
-                    {
-                        favorites.filter((item, idx) => idx >= page * 4 - 4 && idx < page * 4).map((item) => (
-                            <PromtsCard item={item}/>
-                        ))
-                    }
+                {favorites.length ?
+                    <div className="favorites__row">
+                        {
+                            favorites.filter((item, idx) => idx >= page * 4 - 4 && idx < page * 4).map((item) => (
+                                <PromtsCard item={item}/>
+                            ))
+                        }
 
-                </div>
+                    </div> : <h3 className='favorites__error'>Favorites clear</h3>}
                     {
                         favoritesPagesCount.length !== 1 && <ul className="favorites__pag">
                             {

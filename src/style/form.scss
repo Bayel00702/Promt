@@ -3,8 +3,16 @@
   width: 469px;
   height: 100%;
   padding: 100px 0;
-
-  left: 37%;
+  left: 50%;
+  transform: translateX(-50%);
+  &__add__images{
+    padding: 15px 20px;
+    background: rgb(240, 242, 247);
+    text-align: center;
+    border-radius: 10px;
+    width: 70%;
+    margin: 0 auto;
+  }
   &__title{
     color: var(--white, #FFF);
     text-align: center;

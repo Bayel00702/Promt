@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactPlayer from "react-player";
+import { useSelector} from "react-redux";
 import {Link} from 'react-router-dom'
 
+
+
 const Earn = () => {
+    const {user} = useSelector(store => store.oneUser)
     return (
         <section className="earn">
             <div className="container">
@@ -20,7 +24,7 @@ const Earn = () => {
                             <br/>
                             Upload your prompt, connect with Stripe, and become a seller in just 2 minutes.
                         </p>
-                        <Link to={'/adddeclaration'} className="earn__right-btn">Sell A Prompt</Link>
+                        {user === null ? <Link to={'/adddeclaration'} className="free__center-btn">Sell A Prompt</Link> : <Link to={'/register'} className="free__center-btn">Sell A Prompt</Link>}
 
                     </div>
                 </div>

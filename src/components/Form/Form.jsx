@@ -229,7 +229,7 @@ const Form = () => {
                     }
                     {
                         location.pathname === '/register' ?
-                            <div className="add__images">
+                            <div className="login__add__images">
                                 <span> <AiFillCamera/></span>
                                 <input onChange={handleImageChanges} accept='image/*'  className="add__images-input" type="file"/>
                                 <button onClick={() => addImage(selecttedImage)} type="button">Загрузить</button>
