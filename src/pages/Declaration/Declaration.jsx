@@ -9,9 +9,9 @@ import axios from "../../utils/axios";
 
 
 const Declaration = () => {
-    const id = JSON.parse(localStorage.getItem("@@remember-rootState"))?.auth ? JSON.parse(localStorage.getItem("@@remember-rootState"))?.auth?.user?._id : ''
+    const id = JSON.parse(localStorage.getItem("@@remember-rootState"))?.auth ? JSON.parse(localStorage.getItem("@@remember-rootState")).auth?.user?._id : '';
     const token = localStorage.getItem("@@remember-rootState") ? JSON.parse(localStorage.getItem("@@remember-rootState"))?.auth?.token : "";
-
+    console.log(id)
     const [increaseViews] = useIncreaseViewsMutation();
 
     const dispatch = useDispatch();
@@ -83,7 +83,7 @@ const Declaration = () => {
                         <p className="declaration__right-phone"><span><AiFillPhone/></span>{order.phone}</p>
                         <p className="declaration__right-phone">Просмотрено: <span>{order.views}</span></p>
                         {
-                            order.creatorData.id === id ? <p style={{background: 'red'}} className="declaration__right-phone"
+                            order.creatorData && order.creatorData.id === id ? <p style={{color: 'red'}} className="declaration__right-phone"
                             onClick={delOrder}
                             ><span>Удалить заказ </span></p> :  ""
                         }

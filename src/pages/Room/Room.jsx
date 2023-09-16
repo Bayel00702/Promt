@@ -60,13 +60,10 @@ const Room = () => {
     };
 
     const handleImageChange = (event) => {
-
+        setSelectedImage(event.target.files[0]);
         console.log(event)
     };
-    const handleChangeUser = (event) => {
 
-        console.log(event)
-    };
 
     const resUpload = async (file) => {
         let formData = new FormData();
@@ -81,21 +78,21 @@ const Room = () => {
         })
     };
 
-    const resUser =  (data) =>{
-        axios.post(`/user/${user._id}`, data, {
+    const resUser = async  (data) =>{
+        console.log(data)
+        await axios.post(`/user/${user._id}`, data, {
             headers: {
                 'Content-Type': 'application/json',
                 "Authorization": `Bearer ${token}`
             },
-        }).then(({data}) =>
+        }).then((res) =>
             {
-                dispatch(setUser(data.user));
+                console.log(res.data);
+                dispatch(setUser(res.data.user));
                 navigate('/')
             }
         )
     };
-
-
     const {
         register,
         handleSubmit,
@@ -258,7 +255,7 @@ const Room = () => {
                                         </form> :
                                         tab2 === 'Email' ?
                                             <form
-                                                onSubmit={handleSubmit(handleChangeUser)}
+                                                onSubmit={handleSubmit(resUser)}
                                                 className="room__resUser">
                                                 <label htmlFor="" className="room__right-label">
                                                     <h3 className="room__right-subtitle">My name </h3>
@@ -276,7 +273,7 @@ const Room = () => {
                                                     <h3 className="room__right-subtitle">Phone*</h3>
                                                     <InputMask mask={`+\\9\\96(999)99-99-99`} type='tel'  {...register('number')} className='room__right-input' placeholder='Номер телефона' />
                                                 </label>
-                                                <button onClick={() => resUser(selectedUser)}  type="submit" className="room__right-btn">Save</button>
+                                                <button   type="submit" className="room__right-btn">Save</button>
                                             </form>
                                             : ''
                                 }

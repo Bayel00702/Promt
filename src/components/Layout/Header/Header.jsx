@@ -75,11 +75,11 @@ const Header = () => {
                     </div>
                     <div className="header__right">
                         <span className="header__right-icons">
-                            <Link className="header__right-icons header__right-icon__none" to=''><BsFacebook/></Link>
-                            <Link className="header__right-icons header__right-icon__none" to=''><BsInstagram/></Link>
-                            <Link className="header__right-icons header__right-icon__none" to=''><AiOutlineTwitter/></Link>
+                            <Link className="header__right-icons header__right-icon__none" to='https://ru-ru.facebook.com/'><BsFacebook/></Link>
+                            <Link className="header__right-icons header__right-icon__none" to='https://www.instagram.com/skesano44/'><BsInstagram/></Link>
+                            <Link className="header__right-icons header__right-icon__none" to='https://twitter.com/?lang=ru'><AiOutlineTwitter/></Link>
                             {
-                                JSON.parse(localStorage.getItem('@@remember-rootState'))?.auth?.user !== null ?
+                                JSON.parse(localStorage.getItem('@@remember-rootState')).auth?.user !== null ?
                                     <Link className="header__right-icons" to={'/room'}><AiOutlineUser/></Link>
                                     : ''
 

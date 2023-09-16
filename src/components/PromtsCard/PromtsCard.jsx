@@ -20,7 +20,7 @@ const PromtsCard = ({item}) => {
                 <div className="promts__card-infos">
                     <div className="promts__card-info">
                         <h2 className="promts__card-title">{item.title}</h2>
-                        <p className="promts__card-price">{item.price} KGZ</p>
+                        <p className="promts__card-price">{item.price}$</p>
                         <p className="promts__card-text">{item.category}</p>
                     </div>
                     <div className="promts__card-infos__profile">
