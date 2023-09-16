@@ -42,7 +42,7 @@ const Header = () => {
                 <nav className="header__nav">
                     <Link to="/" className="header__left">
                         <img src={Logo} alt="Logo" className="header__img"/>
-                        <span><svg width="109" height="26" viewBox="0 0 109 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <span className='header__left-text'><svg width="109" height="26" viewBox="0 0 109 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0.290527 20.1434V0.141907H8.06911C10.0113 0.141907 11.543 0.67528 12.6642 1.74203C13.7854 2.80877 14.346 4.27555 14.346 6.14236C14.346 7.91392 13.7854 9.32355 12.6642 10.3712C11.543 11.3999 10.0113 11.9142 8.06911 11.9142H4.46514V20.1434H0.290527ZM4.46514 8.59968H7.97902C8.75988 8.59968 9.37055 8.3711 9.81104 7.91392C10.2515 7.43769 10.4718 6.82812 10.4718 6.08521C10.4718 5.24705 10.2515 4.59939 9.81104 4.14221C9.37055 3.66598 8.75988 3.42787 7.97902 3.42787H4.46514V8.59968Z" fill="white"/>
 <path d="M17.717 20.1434V9.7712L15.9751 7.31387L19.2187 5.28515L20.3599 6.91384C20.4801 7.04719 20.6002 7.12338 20.7203 7.14243C20.8405 7.14243 20.9706 7.07576 21.1108 6.94242C21.6314 6.50429 22.2921 6.12331 23.093 5.79947C23.8939 5.45659 24.8849 5.28515 26.0662 5.28515H26.5468V8.71398C24.7848 8.71398 23.5234 9.00924 22.7626 9.59976C22.0018 10.1712 21.6213 10.9903 21.6213 12.0571V20.1434H17.717Z" fill="white"/>
 <path d="M34.7716 20.4863C32.8495 20.4863 31.3378 20.0101 30.2366 19.0576C29.1354 18.0861 28.4847 16.886 28.2845 15.4573C28.1643 14.543 28.1043 13.7048 28.1043 12.9429C28.1043 12.5047 28.1143 12.0857 28.1343 11.6856C28.1744 11.2666 28.2244 10.8189 28.2845 10.3427C28.5047 8.89495 29.1554 7.69486 30.2366 6.7424C31.3378 5.78995 32.8495 5.31372 34.7716 5.31372C36.6938 5.31372 38.2054 5.78995 39.3066 6.7424C40.4279 7.67581 41.0886 8.8759 41.2888 10.3427C41.409 11.2761 41.469 12.1428 41.469 12.9429C41.469 13.7048 41.409 14.543 41.2888 15.4573C41.0686 16.886 40.4079 18.0861 39.3066 19.0576C38.2054 20.0101 36.6938 20.4863 34.7716 20.4863ZM34.7716 17.3146C35.6326 17.3146 36.2833 17.086 36.7238 16.6289C37.1643 16.1526 37.4246 15.5907 37.5047 14.943C37.6048 14.2001 37.6548 13.5239 37.6548 12.9143C37.6548 12.3047 37.6148 11.619 37.5347 10.857C37.4546 10.1903 37.1843 9.62833 36.7238 9.17116C36.2833 8.69493 35.6326 8.45682 34.7716 8.45682C33.9507 8.45682 33.3 8.69493 32.8195 9.17116C32.359 9.62833 32.0987 10.1903 32.0386 10.857C31.9786 11.619 31.9485 12.3047 31.9485 12.9143C31.9485 13.5239 31.9886 14.2001 32.0687 14.943C32.1487 15.5907 32.409 16.1526 32.8495 16.6289C33.31 17.086 33.9507 17.3146 34.7716 17.3146Z" fill="white"/>
@@ -62,7 +62,6 @@ const Header = () => {
                                 value={searchQuery}
                                 className="header__center-input"
                             />
-                            <span className="header__center-label__icon"><AiOutlineSearch/></span>
                         </label>
                         <ul className="header__list">
                             <li className="header__item"><Link to="/catalog" className="header__item">Marketplace</Link></li>
@@ -76,9 +75,9 @@ const Header = () => {
                     </div>
                     <div className="header__right">
                         <span className="header__right-icons">
-                            <Link className="header__right-icons" to=''><BsFacebook/></Link>
-                            <Link className="header__right-icons" to=''><BsInstagram/></Link>
-                            <Link className="header__right-icons" to=''><AiOutlineTwitter/></Link>
+                            <Link className="header__right-icons header__right-icon__none" to=''><BsFacebook/></Link>
+                            <Link className="header__right-icons header__right-icon__none" to=''><BsInstagram/></Link>
+                            <Link className="header__right-icons header__right-icon__none" to=''><AiOutlineTwitter/></Link>
                             {
                                 JSON.parse(localStorage.getItem('@@remember-rootState'))?.auth?.user !== null ?
                                     <Link className="header__right-icons" to={'/room'}><AiOutlineUser/></Link>
